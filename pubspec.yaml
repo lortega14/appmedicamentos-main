@@ -1,0 +1,27 @@
+name: app_medicamentos
+description: App Medicamentos UASLP
+version: 1.0.0+1
+
+environment:
+  sdk: '>=3.1.0 <4.0.0'
+
+dependencies:
+  flutter:
+    sdk: flutter
+  cupertino_icons: ^1.0.2
+  sqflite: ^2.3.0
+  syncfusion_flutter_datepicker: ^23.1.36
+  persistent_bottom_nav_bar_v2: ^4.2.8
+  path_provider: ^2.1.1
+  intl: ^0.18.0
+  dropdown_textfield: ^1.0.8
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^2.0.0
+
+flutter:
+  uses-material-design: true
+  assets:
+    - assets/images/logo_apesaam.png
