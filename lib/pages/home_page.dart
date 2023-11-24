@@ -4,6 +4,7 @@ import 'package:app_medicamentos/pages/profile/profile_page.dart';
 import 'package:app_medicamentos/utils/button.dart';
 import 'package:intl/intl.dart';
 import 'package:app_medicamentos/utils/texto.dart';
+import 'package:app_medicamentos/pages/map/map_page.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -79,7 +80,18 @@ class _HomePage extends State<HomePage> {
             ),
           ),
         ),
-
+        floatingActionButton: FloatingActionButton(
+          onPressed: () {
+            Navigator.pushAndRemoveUntil <dynamic>(
+                context,
+                MaterialPageRoute <dynamic>(
+                  builder: (BuildContext context) => Mapa(),
+                ),
+                    (route) => false);
+          },
+          child: Icon(Icons.map),
+          backgroundColor: Colors.blue, // Cambia el color según tus preferencias
+        ),
         bottomNavigationBar: Container(
           child: CustomNavigationBar(
           currentIndex: _currentIndex,
