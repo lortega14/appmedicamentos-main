@@ -1,6 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:app_medicamentos/pages/home_page.dart';
 import 'package:app_medicamentos/pages/appointment_register/appointments_date.dart';
+import 'package:app_medicamentos/models/appointment_model.dart';
+import 'package:app_medicamentos/utils/convert_Uppercase.dart';
+import 'package:mask_text_input_formatter/mask_text_input_formatter.dart';
+
 
 class AppointmentsPage extends StatefulWidget {
   const AppointmentsPage({super.key});
@@ -12,6 +16,10 @@ class AppointmentsPage extends StatefulWidget {
 }
 
 class _AppointmentsPage extends State <AppointmentsPage> {
+
+  var maskFormatter = MaskTextInputFormatter(mask: '### ### ####', filter: {"#": RegExp(r'[0-9]')});
+
+  final  Appointment appointment = Appointment();
 
   @override
   Widget build(BuildContext context) {
@@ -53,6 +61,22 @@ class _AppointmentsPage extends State <AppointmentsPage> {
           mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.center,
           children: <Widget>[
+            Align(
+              alignment: Alignment.centerLeft,
+              child: Padding(
+                padding: const EdgeInsets.only(left: 5.0),
+                child: Text(
+                  'Nombre del médico',
+                  textAlign: TextAlign.left,
+                  style: TextStyle(
+                    fontFamily: 'Roboto',
+                    fontSize: 20,
+                    //fontWeight: FontWeight.bold,
+                  ),
+                ),
+              ),
+            ),
+            SizedBox(height: 10,),
             Container(
               decoration: ShapeDecoration(
                 color: Colors.white,
@@ -69,6 +93,7 @@ class _AppointmentsPage extends State <AppointmentsPage> {
                 ],
               ),
               child: TextFormField(
+                controller: nombreMedicoController,
                 obscureText: false,
                 textAlign: TextAlign.left,
                 decoration: InputDecoration(
@@ -82,11 +107,31 @@ class _AppointmentsPage extends State <AppointmentsPage> {
                   ),
                   filled: true,
                   fillColor: Colors.white,
-                  hintText: 'Nombre del médico',
                 ),
+                onChanged: (text) {
+                  setState(() {
+                    convertoUpperCase(text, nombreMedicoController, 0);
+                  });
+                },
               ),
             ),
             SizedBox(height: 20.0,),
+            Align(
+              alignment: Alignment.centerLeft,
+              child: Padding(
+                padding: const EdgeInsets.only(left: 5.0),
+                child: Text(
+                  'Motivo de cita médica',
+                  textAlign: TextAlign.left,
+                  style: TextStyle(
+                    fontFamily: 'Roboto',
+                    fontSize: 20,
+                    //fontWeight: FontWeight.bold,
+                  ),
+                ),
+              ),
+            ),
+            SizedBox(height: 10,),
             Container(
               decoration: ShapeDecoration(
                 color: Colors.white,
@@ -103,6 +148,7 @@ class _AppointmentsPage extends State <AppointmentsPage> {
                 ],
               ),
               child: TextFormField(
+                controller: motivoController,
                 obscureText: false,
                 textAlign: TextAlign.left,
                 decoration: InputDecoration(
@@ -116,11 +162,31 @@ class _AppointmentsPage extends State <AppointmentsPage> {
                   ),
                   filled: true,
                   fillColor: Colors.white,
-                  hintText: 'Motivo de cita médica',
                 ),
+                onChanged: (text) {
+                  setState(() {
+                    convertFirstWordUpperCase(text, motivoController);
+                  });
+                },
               ),
             ),
             SizedBox(height: 20.0,),
+            Align(
+              alignment: Alignment.centerLeft,
+              child: Padding(
+                padding: const EdgeInsets.only(left: 5.0),
+                child: Text(
+                  'Lugar de cita médica',
+                  textAlign: TextAlign.left,
+                  style: TextStyle(
+                    fontFamily: 'Roboto',
+                    fontSize: 20,
+                    //fontWeight: FontWeight.bold,
+                  ),
+                ),
+              ),
+            ),
+            SizedBox(height: 10,),
             Container(
               decoration: ShapeDecoration(
                 color: Colors.white,
@@ -137,6 +203,7 @@ class _AppointmentsPage extends State <AppointmentsPage> {
                 ],
               ),
               child: TextFormField(
+                controller: lugarController,
                 obscureText: false,
                 textAlign: TextAlign.left,
                 decoration: InputDecoration(
@@ -150,11 +217,31 @@ class _AppointmentsPage extends State <AppointmentsPage> {
                   ),
                   filled: true,
                   fillColor: Colors.white,
-                  hintText: 'Lugar de cita médica',
                 ),
+                onChanged: (text) {
+                  setState(() {
+                    convertFirstWordUpperCase(text, lugarController);
+                  });
+                },
               ),
             ),
             SizedBox(height: 20.0,),
+            Align(
+              alignment: Alignment.centerLeft,
+              child: Padding(
+                padding: const EdgeInsets.only(left: 5.0),
+                child: Text(
+                  'Teléfono del médico',
+                  textAlign: TextAlign.left,
+                  style: TextStyle(
+                    fontFamily: 'Roboto',
+                    fontSize: 20,
+                    //fontWeight: FontWeight.bold,
+                  ),
+                ),
+              ),
+            ),
+            SizedBox(height: 10,),
             Container(
               decoration: ShapeDecoration(
                 color: Colors.white,
@@ -171,6 +258,9 @@ class _AppointmentsPage extends State <AppointmentsPage> {
                 ],
               ),
               child: TextFormField(
+                controller: telefonoMedicoController,
+                keyboardType: TextInputType.phone,
+                inputFormatters: [maskFormatter],
                 obscureText: false,
                 textAlign: TextAlign.left,
                 decoration: InputDecoration(
@@ -184,22 +274,22 @@ class _AppointmentsPage extends State <AppointmentsPage> {
                   ),
                   filled: true,
                   fillColor: Colors.white,
-                  hintText: 'Teléfono del médico',
                 ),
               ),
             ),
-            SizedBox(height: 20.0,),
+           // SizedBox(height: 20.0,),
             Padding(
-              padding: EdgeInsets.fromLTRB(0, 100, 0, 0),
+              padding: EdgeInsets.fromLTRB(0, 80, 0, 0),
               child: Container(
                 width: 193,
                 height: 77,
                 child: ElevatedButton(
                   onPressed: () {
+                    SetAppointment();
                     Navigator.pushAndRemoveUntil <dynamic>(
                       context,
                       MaterialPageRoute <dynamic>(
-                          builder: (BuildContext context) => AppointmentsDatePage()
+                          builder: (BuildContext context) => AppointmentsDatePage(appointment: appointment,)
                       ),
                           (route) => false,
                     );
@@ -224,4 +314,16 @@ class _AppointmentsPage extends State <AppointmentsPage> {
       ),
     );
   }
+
+  void SetAppointment(){
+    appointment.nombre_medico = nombreMedicoController.text;
+    appointment.motivo = motivoController.text;
+    appointment.ubicacion = lugarController.text;
+    appointment.telefono_medico = telefonoMedicoController.text.replaceAll(' ', '');
+  }
 }
+
+TextEditingController nombreMedicoController = TextEditingController();
+TextEditingController motivoController = TextEditingController();
+TextEditingController lugarController = TextEditingController();
+TextEditingController telefonoMedicoController = TextEditingController();

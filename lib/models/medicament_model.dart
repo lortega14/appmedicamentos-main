@@ -5,6 +5,7 @@ class Medicament{
   String? dosis;
   String? inicioToma;
   String? finToma;
+  String? frecuenciaTipo;
   int? frecuenciaToma;
 
   Medicament({
@@ -14,6 +15,7 @@ class Medicament{
     this.dosis,
     this.inicioToma,
     this.finToma,
+    this.frecuenciaTipo,
     this.frecuenciaToma,
   });
 
@@ -25,6 +27,7 @@ class Medicament{
       'dosis': dosis,
       'inicioToma': inicioToma,
       'finToma': finToma,
+      'frecuenciaTipo': frecuenciaTipo,
       'frecuenciaToma': frecuenciaToma
     };
   }

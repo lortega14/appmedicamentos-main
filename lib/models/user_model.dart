@@ -8,9 +8,9 @@ class User{
    String? calle;
    String? club;
    String? numExterior;
-   bool? activeCaregiver;
-   String? nameCaregiver;
-   String? phoneCaregiver;
+   bool? cuidador_activo;
+   String? cuidador_nombre;
+   String? cuidador_telefono;
 
   User({
     this.id_usuario,
@@ -22,9 +22,9 @@ class User{
     this.calle,
     this.numExterior,
     this.club,
-    this.activeCaregiver,
-    this.nameCaregiver,
-    this.phoneCaregiver
+    this.cuidador_activo,
+    this.cuidador_nombre,
+    this.cuidador_telefono
   });
 
   Map<String, dynamic> toMap() {
@@ -33,12 +33,12 @@ class User{
       'nombre': nombre,
       'apellidoP': apellidoP,
       'apellidoM': apellidoM,
-      'fechaNac': telefono,
-      'birthdate': fechaNac,
+      'telefono': telefono,
+      'fechaNac': fechaNac,
       'club': club,
-      'active_caregiver': activeCaregiver,
-      'name_caregiver': nameCaregiver,
-      'caregiver_phone': phoneCaregiver
+      'cuidador_activo': cuidador_activo,
+      'cuidador_nombre': cuidador_nombre,
+      'cuidador_telefono': cuidador_telefono
     };
   }
 }

@@ -5,9 +5,10 @@ import 'package:app_medicamentos/pages/start_page.dart';
 import 'package:app_medicamentos/pages/home_page.dart';
 import 'package:app_medicamentos/pages/appointment_register/appointments.dart';
 import 'package:app_medicamentos/pages/profile/edit_profile.dart';
-import 'package:app_medicamentos/pages/map/map_page.dart';
+import 'package:app_medicamentos/pages/register/name_register.dart';
 import 'package:sqflite/sqflite.dart';
 import 'package:path/path.dart';
+
 void main() {
   runApp(const MyApp());
 }
@@ -22,8 +23,8 @@ class MyApp extends StatelessWidget {
 
     return MaterialApp(
       title: 'Flutter Demo',
-      home: HomePage(),
-      //home: StartPage(),
+      //home: HomePage(),
+      home: StartPage(),
       //home: AppointmentsPage(),
       //home: Forwarder(),
     );

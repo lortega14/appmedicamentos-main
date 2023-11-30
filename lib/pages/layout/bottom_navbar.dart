@@ -1,4 +1,8 @@
 import 'package:flutter/material.dart';
+/*import 'package:app_medicamentos/utils/button.dart';
+import 'package:app_medicamentos/utils/texto.dart';*/
+import 'package:app_medicamentos/utils/buttonSheet.dart';
+import 'package:app_medicamentos/constants.dart';
 
 class CustomNavigationBar extends StatelessWidget {
   final int currentIndex;
@@ -8,8 +12,9 @@ class CustomNavigationBar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final int bandShow = 0;
     return Container(
-      color: Color(0xFF0063C9), // Cambia el color de fondo
+      color: AppStyles.primaryBlue, // Cambia el color de fondo
       height: 55, // Ajusta la altura del contenedor para hacer la barra de navegación más grande
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceAround,
@@ -27,16 +32,17 @@ class CustomNavigationBar extends StatelessWidget {
             },
           ),
           Container(
-            width: 60, // Ancho del botón central
-            height: 60, // Alto del botón central
+            width: 60,
+            height: 60,
             decoration: BoxDecoration(
               shape: BoxShape.circle,
-              color: Color(0xFF09184D),// Cambia el color del fondo circular
+              color: AppStyles.secondaryBlue,
             ),
             child: IconButton(
-              icon: Icon(Icons.add, color: Colors.white, size: 32), // Ajusta el tamaño y color del icono "+"
+              icon: Icon(Icons.add, color: Colors.white, size: 32),
               onPressed: () {
-                onTap(2);
+                //onTap(2);
+                muestraButtonSheet(context, bandShow);
               },
             ),
           ),
@@ -56,4 +62,5 @@ class CustomNavigationBar extends StatelessWidget {
       ),
     );
   }
+  
 }

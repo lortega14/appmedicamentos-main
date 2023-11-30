@@ -3,18 +3,18 @@ import 'package:app_medicamentos/models/user_model.dart';
 import 'package:app_medicamentos/pages/register/name_register.dart';
 import 'package:flutter/material.dart';
 import 'package:app_medicamentos/pages/register/address.dart';
-import 'package:app_medicamentos/pages/home_page.dart';
+import 'package:app_medicamentos/pages/register/carer.dart';
 import 'package:sqflite/sqflite.dart';
 import 'package:path/path.dart';
 import 'package:dropdown_textfield/dropdown_textfield.dart';
+import 'package:app_medicamentos/utils/convert_Uppercase.dart';
+import 'package:app_medicamentos/constants.dart';
 
 
 class Pathologies extends StatefulWidget {
   const Pathologies({super.key, required User this.user});
 
   final User user;
-
-
 
   @override
   State<StatefulWidget> createState() {
@@ -31,21 +31,16 @@ class _Pathologies extends State <Pathologies> {
     List patologias = ['Diabetes Mellitus', 'Hipertensión arterial sistemática', 'Demencia o Alzheimer', 'Artritis', 'Osteoporosis', 'Cardiopatias', 'Parkinson', 'Depresión'];
     return Scaffold(
       resizeToAvoidBottomInset: false,
-      backgroundColor: Color(0xFFEDF2FA),
+      backgroundColor: AppStyles.primaryBackground,
       appBar: PreferredSize(
         preferredSize: Size.fromHeight(60),
         child: AppBar(
-          title: Text(
-            'Registro de Paciente',
-            style: TextStyle(
-              color: Colors.black,
-              fontFamily: 'Roboto',
-              fontWeight: FontWeight.bold,
-              fontSize: 29
-            ),
+          title: const Text(
+            'Registro',
+            style: AppStyles.encabezado1
           ),
           leading: IconButton(
-            icon: const Icon(Icons.arrow_back_rounded, color: Color(0xFF09184D)),
+            icon: const Icon(Icons.arrow_back_rounded, color: Colors.black),
             onPressed: () {
               Navigator.pushAndRemoveUntil <dynamic>(
                 context,
@@ -57,7 +52,7 @@ class _Pathologies extends State <Pathologies> {
             },
           ),
           actions: const [],
-          backgroundColor: const Color(0xFFEDF2FA),
+          backgroundColor: Colors.transparent,
           automaticallyImplyLeading: false,
           centerTitle: false,
           elevation: 0,
@@ -69,62 +64,34 @@ class _Pathologies extends State <Pathologies> {
         child: Form(
           //key: _formKey,
           child: Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 20),
+            padding: const EdgeInsets.only(left: 15.0, right: 15.0, top: 30.0),
             //padding: const EdgeInsets.all(20),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.center,
-              mainAxisAlignment: MainAxisAlignment.center,
+              mainAxisAlignment: MainAxisAlignment.start,
              // crossAxisAlignment: CrossAxisAlignment.center,
               children: <Widget>[
-                //Padding(padding: EdgeInsets.only(top: 50)),
-                Row(
-                  children: [
-                    Align(
-                      alignment: Alignment.centerLeft,
-                      child: Text(
-                        'Patologías',
-                        textAlign: TextAlign.left,
-                        style: TextStyle(
-                          fontFamily: 'Roboto',
-                          fontSize: 20,
-                          fontWeight: FontWeight.bold,
-                        ),
-                      ),
+                Align(
+                  alignment: Alignment.centerLeft,
+                  child: const Padding(
+                    padding: const EdgeInsets.only(left: 5.0),
+                    child: Text(
+                      'Seleccione en caso de tener alguno(s) de estos padecimientos',
+                      textAlign: TextAlign.left,
+                      style: AppStyles.texto1,
                     ),
-                    SizedBox(width: 10,),
-                    Align(
-                      alignment: Alignment.centerLeft,
-                      child: Text(
-                        '(opcional)',
-                        textAlign: TextAlign.left,
-                        style: TextStyle(
-                          color: Color(0xFF6A6A6A),
-                          fontFamily: 'Roboto',
-                          fontSize: 20,
-                          fontWeight: FontWeight.bold,
-                        ),
-                      ),
-                    ),
-                  ],
+                  ),
                 ),
-                SizedBox(height: 20,),
-                const SizedBox(
-                  height: 20,
-                ),
+                SizedBox(height: 30.0),
+
 
                 Column(
-
                   children: [
                     DropDownTextField.multiSelection(
-
-
                       //controller: _cntMulti.dropDownValueList,
-                      //Propiedades botón
-                      submitButtonColor: Color(0xFF0063C9),
+                      submitButtonColor: AppStyles.primaryBlue,
                       submitButtonText: 'Aceptar',
-                      submitButtonTextStyle: TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
-
-
+                      textStyle: AppStyles.texto1,
 
                       dropdownColor: Colors.white,
 
@@ -142,11 +109,6 @@ class _Pathologies extends State <Pathologies> {
                         DropDownValueModel(name: 'Hipertensión arterial sistemática', value: "Hipertensión arterial sistemática", /* Muestra un dialog* toolTipMsg: "DropDownButton is a widget that we can use to select one unique value from a set of values"*/),
                         DropDownValueModel(name: 'Osteoporosis', value: "Osteoporosis"),
                         DropDownValueModel(name: 'Parkinson', value: "Parkinson"),
-                        /*
-                        DropDownValueModel(name: 'name10', value: "value10"),
-                        DropDownValueModel(name: 'name11', value: "value11"),
-
-                        */
                       ],
                       onChanged: (val) {
                         setState(() {
@@ -161,76 +123,46 @@ class _Pathologies extends State <Pathologies> {
                   ],
 
                 ),
-                const SizedBox(height: 50,),
+                const SizedBox(height: 50),
+
+
                 Align(
                   alignment: Alignment.centerLeft,
-                  child: Padding(
+                  child: const Padding(
                     padding: const EdgeInsets.only(left: 5.0),
                     child: Text(
-                      'Otras patologías(s)',
+                      'Otro padecimiento',
                       textAlign: TextAlign.left,
-                      style: TextStyle(
-                        fontFamily: 'Roboto',
-                        fontSize: 20,
-                        //fontWeight: FontWeight.bold,
-                      ),
+                      style: AppStyles.texto1,
                     ),
                   ),
                 ),
-                SizedBox(height: 10.0,),
-                Container(
-                  decoration: ShapeDecoration(
-                    color: Colors.white,
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(12),
-                    ),
-                    shadows: [
-                      BoxShadow(
-                        color: Color(0x3F000000),
-                        blurRadius: 4,
-                        offset: Offset(0, 4),
-                        spreadRadius: 0,
-                      )
-                    ],
-                  ),
-                  child: TextFormField(
-                    controller: otraspatController,
-                    obscureText: false,
-                    textAlign: TextAlign.left,
-                    decoration: InputDecoration(
-                      enabledBorder: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(15),
-                          borderSide: const BorderSide(
-                              color: Colors.white,
-                              width: 1,
-                              style: BorderStyle.solid
-
-                          )
+                const SizedBox(height: 10.0),
+                  Container(
+                    decoration: AppStyles.contenedorTextForm,
+                    child: Padding(
+                      padding: const EdgeInsets.all(5.0),
+                      child: TextFormField(
+                        controller: otraspatController,
+                        obscureText: false,
+                        textAlign: TextAlign.left,
+                        decoration: AppStyles.textFieldEstilo,
+                        style: AppStyles.texto1,
+                        onChanged: (text) {
+                          setState(() {
+                            convertFirstWordUpperCase(text, otraspatController);
+                          });
+                        },
                       ),
-                      filled: true,
-                      fillColor: Colors.white,
                     ),
-                    onChanged: (text) {
-                      setState(() {
-                        // Verificar si el texto no está vacío
-                        if (text.trim().isNotEmpty) {
-                          // Convertir la primera letra a mayúscula
-                          text = text[0].toUpperCase() + text.substring(1);
-                          // Asignar el texto al controlador
-                          otraspatController.text = text;
-
-                        }
-                      });
-                    },
-                  ),
                 ),
                 const SizedBox(height: 20,),
 
                 Padding(
-                  padding: EdgeInsets.fromLTRB(0, 100, 0, 0),
+                  padding: EdgeInsets.fromLTRB(0, 150, 0, 0),
                   child: Container(
-                    width: 193,
-                    height: 77,
+                    width: AppStyles.anchoBoton,
+                    height: AppStyles.altoBoton,
                     child: ElevatedButton(
                       onPressed: () {
                         print(otraspatController.text);
@@ -238,22 +170,14 @@ class _Pathologies extends State <Pathologies> {
                         Navigator.pushAndRemoveUntil <dynamic>(
                           context,
                           MaterialPageRoute <dynamic>(
-                              builder: (BuildContext context) => HomePage()
+                              builder: (BuildContext context) => CarerPage(user: widget.user,)
                           ),
                               (route) => false,
                         );
                       },
-                      style: ElevatedButton.styleFrom(
-                          backgroundColor: Color(0xFF0063C9),
-                          elevation: 5,
-                          shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(16),
-                          )
-                      ),
+                      style: AppStyles.botonPrincipal,
                       child: Text("Siguiente",
-                        style: TextStyle(
-                            fontSize: 26
-                        ),
+                        style: AppStyles.textoBoton
                       ),
                     ),
                   ),
@@ -280,85 +204,86 @@ class _Pathologies extends State <Pathologies> {
     Database database = await openDatabase(
         join(await getDatabasesPath(), 'medicamentos.db'), version: 1);
 
-    await database.transaction((txn) async {
+    try {
+      await database.transaction((txn) async {
+        String sql =
+            'CREATE TABLE Usuario (id_usuario INTEGER PRIMARY KEY, '
+            'nombre TEXT, '
+            'apellidoP TEXT,  '
+            'apellidoM TEXT,  '
+            'fechaNac REAL,  '
+            'telefono TEXT, '
+            'calle TEXT, '
+            'club TEXT, '
+            'numero_exterior TEXT, '
+            'cuidador_activo INTEGER, '
+            'cuidador_nombre TEXT, '
+            'cuidador_telefono TEXT); ';
+        txn.rawQuery(sql);
 
-      String sql=
-          'CREATE TABLE Usuario (id_usuario INTEGER PRIMARY KEY, '
-          'nombre TEXT, '
-          'apellidoP TEXT,  '
-          'apellidoM TEXT,  '
-          'fechaNac REAL,  '
-          'telefono TEXT, '
-          'calle TEXT, '
-          'club TEXT, '
-          'numero_exterior TEXT, '
-          'cuidador_activo INTEGER, '
-          'cuidador_nombre TEXT, '
-          'cuidador_telefono TEXT); ';
-      txn.rawQuery(sql);
+        sql =
+        'CREATE TABLE Padecimiento (id_padecimiento INTEGER PRIMARY KEY, '
+            'nombre_padecimiento TEXT); ';
+        txn.rawQuery(sql);
 
-       sql=
-          'CREATE TABLE Padecimiento (id_padecimiento INTEGER PRIMARY KEY, '
-          'nombre_padecimiento TEXT); ';
-      txn.rawQuery(sql);
+        sql = 'CREATE TABLE Medicamento (id_medicamento INTEGER PRIMARY KEY, '
+            'nombre TEXT, '
+            'descripcion TEXT,  '
+            'dosis TEXT,  '
+            'inicioToma REAL,  '
+            'finToma REAL,'
+            'frecuenciaTipo TEXT,  '
+            'frecuenciaToma INTEGER); ';
+        txn.rawQuery(sql);
 
-      sql =  'CREATE TABLE Medicamento (id_medicamento INTEGER PRIMARY KEY, '
-          'nombre TEXT, '
-          'descripcion TEXT,  '
-          'dosis TEXT,  '
-          'inicioToma REAL,  '
-          'finToma REAL, '
-          'frecuenciaToma INTEGER); ';
-      txn.rawQuery(sql);
+        sql = 'CREATE TABLE Cita (id_cita INTEGER PRIMARY KEY, '
+            'nombre_medico TEXT, '
+            'motivo TEXT,  '
+            'especialidad_medico TEXT,  '
+            'ubicacion TEXT,  '
+            'telefono_medico TEXT,  '
+            'fecha TEXT); ';
+        txn.rawQuery(sql);
 
-      sql = 'CREATE TABLE Cita (id_cita INTEGER PRIMARY KEY, '
-          'nombre_medico TEXT, '
-          'especialidad_medico TEXT,  '
-          'ubicacion TEXT,  '
-          'telefono_medico TEXT,  '
-          'fecha REAL); ';
-      txn.rawQuery(sql);
+        sql = 'CREATE TABLE Recordatorio (id_recordatorio INTEGER PRIMARY KEY, '
+            'tipo TEXT, '
+            'id_medicamento INTEGER,  '
+            'id_cita INTEGER, '
+            'fecha_hora TEXT);  ';
+        txn.rawQuery(sql);
 
-      sql = 'CREATE TABLE Recordatorio (id_recordatorio INTEGER PRIMARY KEY, '
-          'tipo TEXT, '
-          'id_medicamento INTEGER,  '
-          'id_cita);  ';
-      txn.rawQuery(sql);
+        sql =
+        'CREATE TABLE RecordatotioRegistro (id_registro INTEGER PRIMARY KEY, '
+            'fecha TEXT); ';
+        txn.rawQuery(sql);
 
-      sql = 'SELECT * FROM Usuario';
-      txn.rawQuery(sql);
+        for (int i = 0; i < patologias.length; i++) {
+          var padecimiento = {
+            'nombre_padecimiento': patologias[i].toString(),
+          };
 
-      var usuario = {
-        'nombre': widget.user.nombre,
-        'apellidoP': widget.user.apellidoP,
-        'apellidoM': widget.user.apellidoM,
-        'fechaNac': widget.user.fechaNac.toString(),
-        'calle': widget.user.calle,
-        'club': widget.user.club,
-        'numero_exterior': widget.user.numExterior,
-        'cuidador_activo': 0
-      };
+          var id2 = txn.insert('Padecimiento', padecimiento);
 
-      var id1 = txn.insert('Usuario', usuario);
+          print(padecimiento["nombre_padecimiento"].toString() + " insertado.");
+        }
 
-      for(int i=0; i<patologias.length; i++) {
-        var padecimiento = {
-          'nombre_padecimiento': patologias,
+        var otroPadecimiento = {
+          'nombre_padecimiento': otraspatController.text,
         };
 
-        var id2 = txn.insert('Padecimiento', padecimiento);
+        var id2 = txn.insert('Padecimiento', otroPadecimiento);
+        print(
+            otroPadecimiento["nombre_padecimiento"].toString() + " insertado.");
+      });
+    }catch(exception) {
+      print(exception);
+    }
 
-        print(padecimiento["nombre_padecimiento"].toString() + " insertado.");
-      }
 
-      var otroPadecimiento = {
-        'nombre_padecimiento': otraspatController.text,
-      };
-
-      var id2 = txn.insert('Padecimiento', otroPadecimiento);
-
-      print(otroPadecimiento["nombre_padecimiento"].toString() + " insertado.");
-    });
+    final List<Map<String, dynamic>> r = await database.rawQuery(
+      "INSERT INTO RecordatotioRegistro (fecha) VALUES ('" + DateTime.now().toString().split(" ")[0] + "')",
+    );
+    print("INSERT INTO RecordatotioRegistro (fecha) VALUES ('" + DateTime.now().toString().split(" ")[0] + "')");
   }
 }
 

@@ -13,8 +13,13 @@ dependencies:
   syncfusion_flutter_datepicker: ^23.1.36
   persistent_bottom_nav_bar_v2: ^4.2.8
   path_provider: ^2.1.1
-  intl: ^0.18.0
+  intl: ^0.18.1
   dropdown_textfield: ^1.0.8
+  url_launcher: ^6.2.1
+  flutter_local_notifications: ^16.1.0
+  mask_text_input_formatter: ^2.6.0
+  page_transition: ^2.1.0
+  flutter_alarm_clock: ^0.1.1
   google_maps_flutter: ^2.5.0
   http: ^1.1.0
 
@@ -27,3 +32,13 @@ flutter:
   uses-material-design: true
   assets:
     - assets/images/logo_apesaam.png
+
+  fonts:
+    - family: Roboto
+      fonts:
+      - asset: assets/fonts/Roboto-Bold.ttf
+      - asset: assets/fonts/Roboto-Light.ttf
+      - asset: assets/fonts/Roboto-Medium.ttf
+      - asset: assets/fonts/Roboto-Regular.ttf
+      - asset: assets/fonts/Roboto-Thin.ttf
+
