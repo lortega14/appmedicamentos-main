@@ -1,6 +1,7 @@
 import 'package:app_medicamentos/pages/calendar/calendar.dart';
 import 'package:app_medicamentos/pages/home_page.dart';
 import 'package:app_medicamentos/pages/records/records.dart';
+import 'package:app_medicamentos/utils/singleton.dart';
 import 'package:flutter/material.dart';
 import 'package:app_medicamentos/pages/medicaments_register/medicaments_register.dart';
 import 'package:intl/intl.dart';
@@ -25,6 +26,7 @@ class MedicamentDateRegister extends StatefulWidget {
 }
 
 class _MedicamentDateRegister extends State <MedicamentDateRegister> {
+  Singleton singleton = Singleton();
   var medicamentDate;
 
   @override
@@ -42,8 +44,8 @@ class _MedicamentDateRegister extends State <MedicamentDateRegister> {
             ),
           ),
           leading: IconButton(
-            icon: const Icon(
-                Icons.arrow_back_rounded, color: Color(0xFF09184D)),
+            icon: Icon(
+                Icons.arrow_back_rounded, color: singleton.interfazColores.dark),
             onPressed: () {
               Navigator.pushAndRemoveUntil <dynamic>(
                 context,
@@ -74,8 +76,8 @@ class _MedicamentDateRegister extends State <MedicamentDateRegister> {
               onSelectionChanged: (DateRangePickerSelectionChangedArgs args) {
                 medicamentDate = args.value;
               },
-              todayHighlightColor: Color(0xFF09184D),
-              selectionColor: Color(0xFF09184D),
+              todayHighlightColor: singleton.interfazColores.dark,
+              selectionColor: singleton.interfazColores.dark,
             ),
           TextField(
             controller: timeinput, //editing controller of this TextField
@@ -114,7 +116,7 @@ class _MedicamentDateRegister extends State <MedicamentDateRegister> {
                     muestraButtonSheet(context, result);
                   },
                   style: ElevatedButton.styleFrom(
-                      backgroundColor: Color(0xFF0063C9),
+                      backgroundColor: singleton.interfazColores.neutral,
                       elevation: 5,
                       shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(16),

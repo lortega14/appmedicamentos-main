@@ -1,3 +1,4 @@
+import 'package:app_medicamentos/utils/singleton.dart';
 import 'package:flutter/material.dart';
 import 'package:app_medicamentos/pages/start_page.dart';
 import 'package:app_medicamentos/pages/register/birth_date_register.dart';
@@ -16,6 +17,7 @@ class NameRegister extends StatefulWidget {
 }
 
 class _NameRegister extends State <NameRegister> {
+  Singleton singleton = Singleton();
 
   final User user = User();
 
@@ -192,7 +194,13 @@ class _NameRegister extends State <NameRegister> {
                       }
                     });
                   },
-                  style: AppStyles.botonPrincipal,
+                  style: ElevatedButton.styleFrom(
+                      backgroundColor: singleton.interfazColores.neutral,
+                      elevation: 5,
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(16),
+                      )
+                  ),
                   child: Text("Siguiente",
                     style: AppStyles.textoBoton
                   ),

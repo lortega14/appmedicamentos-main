@@ -7,12 +7,12 @@ class AppStyles {
   static final altoBoton = 70.0;
 
   //COLORES
-  static const Color primaryBlue = Color(0xFF0063C9);
-  static const Color secondaryBlue = Color(0xFF09184D);
-  static const Color primaryGrey = Color(0xFF808085);
-  static const Color primaryBackground = Color(0xFFEDF2FA);
-  static const Color errorColor = Color(0xFFFF1744);
-  static const Color sombraForm = Color(0x3F000000);
+  static const Color primaryBlue = Color(0xFF9A9996);
+  static const Color secondaryBlue = Color(0xFF5E5C64);
+  static const Color primaryGrey = Color(0xFF77767B);
+  static const Color primaryBackground = Color(0xFFF6F5F4);
+  static const Color errorColor = Color(0xFFC01C28);
+  static const Color sombraForm = Color(0x3F241F31);
 
   //TEXTO
   static const TextStyle encabezado1 = TextStyle(
@@ -61,7 +61,7 @@ class AppStyles {
     fontFamily: 'Roboto',
     fontSize: 22.0,
     fontWeight: FontWeight.bold,
-    color: Colors.white,
+    color: Color(0xFFF6F5F4),
   );
 
   //BOTONES
@@ -75,7 +75,7 @@ class AppStyles {
 
   //TEXTFORMFIELDS
   static final contenedorTextForm = ShapeDecoration(
-    color: Colors.white,
+    color: Color(0xFFF6F5F4),
     shape: RoundedRectangleBorder(
       borderRadius: BorderRadius.circular(16),
     ),
@@ -93,14 +93,14 @@ class AppStyles {
     enabledBorder: OutlineInputBorder(
       borderRadius: BorderRadius.circular(16),
       borderSide: const BorderSide(
-        color: Colors.white,
+        color: Color(0xFFF6F5F4),
         width: 1,
         style: BorderStyle.solid,
       ),
     ),
     focusedBorder: InputBorder.none,
     filled: true,
-    fillColor: Colors.white,
+    fillColor: Color(0xFFF6F5F4),
     errorStyle: AppStyles.textoError,
   );
 }

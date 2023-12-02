@@ -1,5 +1,6 @@
 import 'package:app_medicamentos/models/appointment_model.dart';
 import 'package:app_medicamentos/models/reminder_model.dart';
+import 'package:app_medicamentos/utils/singleton.dart';
 import 'package:flutter/material.dart';
 import 'package:app_medicamentos/pages/home_page.dart';
 import 'package:sqflite/sqflite.dart';
@@ -26,9 +27,11 @@ class _AppointmentsDatePage extends State <AppointmentsDatePage> {
 
   @override
   Widget build(BuildContext context) {
+    Singleton singleton = Singleton();
+
     return Scaffold(
       resizeToAvoidBottomInset: false,
-      backgroundColor: Color(0xFFEDF2FA),
+      backgroundColor: Color(0xFFF6F5F4),
       appBar: PreferredSize(
         preferredSize: Size.fromHeight(60),
         child: AppBar(
@@ -39,7 +42,7 @@ class _AppointmentsDatePage extends State <AppointmentsDatePage> {
             ),
           ),
           leading: IconButton(
-            icon: const Icon(Icons.arrow_back_rounded, color: Color(0xFF09184D)),
+            icon: Icon(Icons.arrow_back_rounded, color: singleton.interfazColores.getColorDark()),
             onPressed: () {
               Navigator.pushAndRemoveUntil <dynamic>(
                 context,
@@ -51,7 +54,7 @@ class _AppointmentsDatePage extends State <AppointmentsDatePage> {
             },
           ),
           actions: const [],
-          backgroundColor: const Color(0xFFEDF2FA),
+          backgroundColor: const Color(0xFFF6F5F4),
           automaticallyImplyLeading: false,
           centerTitle: false,
           elevation: 0,
@@ -70,8 +73,8 @@ class _AppointmentsDatePage extends State <AppointmentsDatePage> {
               onSelectionChanged: (DateRangePickerSelectionChangedArgs args) {
                   appointmentDate = args.value;
               },
-              todayHighlightColor: Color(0xFF09184D),
-              selectionColor: Color(0xFF09184D),
+              todayHighlightColor: singleton.interfazColores.getColorDark(),
+              selectionColor: singleton.interfazColores.getColorDark(),
             ),
             SizedBox(height: 20.0,),
             TextField(
@@ -112,7 +115,7 @@ class _AppointmentsDatePage extends State <AppointmentsDatePage> {
 
                   },
                   style: ElevatedButton.styleFrom(
-                      backgroundColor: Color(0xFF0063C9),
+                      backgroundColor: singleton.interfazColores.getColorNeutral(),
                       elevation: 5,
                       shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(16),

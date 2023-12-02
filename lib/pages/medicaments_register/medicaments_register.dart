@@ -1,3 +1,4 @@
+import 'package:app_medicamentos/utils/singleton.dart';
 import 'package:flutter/material.dart';
 import 'package:app_medicamentos/pages/home_page.dart';
 import 'package:app_medicamentos/pages/medicaments_register/medicaments_register_date.dart';
@@ -16,6 +17,7 @@ class MedicamentNameRegister extends StatefulWidget {
 }
 
 class _MedicamentNameRegister extends State <MedicamentNameRegister> {
+  Singleton singleton = Singleton();
   final Medicament medicament = Medicament();
   final  freqHour = TextEditingController();
   final  freqDay = TextEditingController();
@@ -85,7 +87,7 @@ class _MedicamentNameRegister extends State <MedicamentNameRegister> {
               SizedBox(height: 10,),
               Container(
                 decoration: ShapeDecoration(
-                  color: Colors.white,
+                  color: Color(0xFFF6F5F4),
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(12),
                   ),
@@ -106,13 +108,13 @@ class _MedicamentNameRegister extends State <MedicamentNameRegister> {
                     enabledBorder: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(15),
                         borderSide: const BorderSide(
-                            color: Colors.white,
+                            color: Color(0xFFF6F5F4),
                             width: 1,
                             style: BorderStyle.solid
                         )
                     ),
                     filled: true,
-                    fillColor: Colors.white,
+                    fillColor: Color(0xFFF6F5F4),
                   ),
 
                   onChanged: (text) {
@@ -141,7 +143,7 @@ class _MedicamentNameRegister extends State <MedicamentNameRegister> {
               SizedBox(height: 10,),
               Container(
                 decoration: ShapeDecoration(
-                  color: Colors.white,
+                  color: Color(0xFFF6F5F4),
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(12),
                   ),
@@ -162,13 +164,13 @@ class _MedicamentNameRegister extends State <MedicamentNameRegister> {
                     enabledBorder: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(15),
                         borderSide: const BorderSide(
-                            color: Colors.white,
+                            color: Color(0xFFF6F5F4),
                             width: 1,
                             style: BorderStyle.solid
                         )
                     ),
                     filled: true,
-                    fillColor: Colors.white,
+                    fillColor: Color(0xFFF6F5F4),
                   ),
                 ),
               ),
@@ -178,7 +180,7 @@ class _MedicamentNameRegister extends State <MedicamentNameRegister> {
               InkWell(
                 child: Container(
                   decoration: ShapeDecoration(
-                    color: Colors.white,
+                    color: Color(0xFFF6F5F4),
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(12),
                     ),
@@ -215,7 +217,7 @@ class _MedicamentNameRegister extends State <MedicamentNameRegister> {
                   margin: EdgeInsets.only(top: 3.0),
                   padding: EdgeInsets.all(16.0),
                   decoration: ShapeDecoration(
-                    color: Colors.white,
+                    color: Color(0xFFF6F5F4),
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(12),
                     ),
@@ -232,7 +234,7 @@ class _MedicamentNameRegister extends State <MedicamentNameRegister> {
                   child: Column(
                     children: <Widget>[
                       RadioListTile<Frequency>(
-                        activeColor: Color(0xFF0D1C52),
+                        activeColor: singleton.interfazColores.dark,
                         title: Row(
                           children: [
                             Container(
@@ -243,10 +245,10 @@ class _MedicamentNameRegister extends State <MedicamentNameRegister> {
                                 textAlign: TextAlign.left,
                                 decoration: InputDecoration(
                                   border: UnderlineInputBorder(
-                                    borderSide: BorderSide(color: Color(0xFF0D1C52),),
+                                    borderSide: BorderSide(color: singleton.interfazColores.dark,),
                                   ),
                                   filled: true,
-                                  fillColor: Colors.white,
+                                  fillColor: Color(0xFFF6F5F4),
                                 ),
                               ),
                             ),
@@ -266,7 +268,7 @@ class _MedicamentNameRegister extends State <MedicamentNameRegister> {
                       ),
 
                       RadioListTile<Frequency>(
-                        activeColor: Color(0xFF0D1C52),
+                        activeColor: singleton.interfazColores.dark,
                         title: Row(
                           children: [
                             Container(
@@ -278,10 +280,10 @@ class _MedicamentNameRegister extends State <MedicamentNameRegister> {
                                 textAlign: TextAlign.left,
                                 decoration: InputDecoration(
                                   border: UnderlineInputBorder(
-                                    borderSide: BorderSide(color: Color(0xFF0D1C52),),
+                                    borderSide: BorderSide(color: singleton.interfazColores.dark,),
                                   ),
                                   filled: true,
-                                  fillColor: Colors.white,
+                                  fillColor: Color(0xFFF6F5F4),
                                 ),
                               ),
                             ),
@@ -301,7 +303,7 @@ class _MedicamentNameRegister extends State <MedicamentNameRegister> {
                       ),
 
                       RadioListTile<Frequency>(
-                        activeColor: Color(0xFF0D1C52),
+                        activeColor: singleton.interfazColores.dark,
                         title: Row(
                           children: [
                             Container(
@@ -312,10 +314,10 @@ class _MedicamentNameRegister extends State <MedicamentNameRegister> {
                                 textAlign: TextAlign.left,
                                 decoration: InputDecoration(
                                   border: UnderlineInputBorder(
-                                    borderSide: BorderSide(color: Color(0xFF0D1C52)),
+                                    borderSide: BorderSide(color: singleton.interfazColores.dark),
                                   ),
                                   filled: true,
-                                  fillColor: Colors.white,
+                                  fillColor: Color(0xFFF6F5F4),
                                 ),
                               ),
                             ),
@@ -335,7 +337,7 @@ class _MedicamentNameRegister extends State <MedicamentNameRegister> {
                       ),
 
                       RadioListTile<Frequency>(
-                        activeColor: Color(0xFF0D1C52),
+                        activeColor: singleton.interfazColores.dark,
                         title: Row(
                           children: [
                             Container(
@@ -347,10 +349,10 @@ class _MedicamentNameRegister extends State <MedicamentNameRegister> {
                                 decoration: InputDecoration(
                                   contentPadding: EdgeInsets.zero,
                                   border: UnderlineInputBorder(
-                                    borderSide: BorderSide(color: Color(0xFF0D1C52)),
+                                    borderSide: BorderSide(color: singleton.interfazColores.dark),
                                   ),
                                   filled: true,
-                                  fillColor: Colors.white,
+                                  fillColor: Color(0xFFF6F5F4),
                                 ),
                               ),
                             ),
@@ -393,7 +395,7 @@ class _MedicamentNameRegister extends State <MedicamentNameRegister> {
                       );
                     },
                     style: ElevatedButton.styleFrom(
-                        backgroundColor: Color(0xFF0063C9),
+                        backgroundColor: singleton.interfazColores.neutral,
                         elevation: 5,
                         shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(16),

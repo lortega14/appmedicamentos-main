@@ -1,4 +1,5 @@
 import 'package:app_medicamentos/pages/start_page.dart';
+import 'package:app_medicamentos/utils/singleton.dart';
 import 'package:flutter/material.dart';
 import 'package:app_medicamentos/pages/home_page.dart';
 import 'package:app_medicamentos/models/user_model.dart';
@@ -21,6 +22,7 @@ class CarerPage extends StatefulWidget {
 }
 
 class _CarerPage extends State <CarerPage> {
+  Singleton singleton = Singleton();
 
   var maskFormatter = MaskTextInputFormatter(mask: '### ### ####', filter: {"#": RegExp(r'[0-9]')});
 
@@ -171,7 +173,13 @@ class _CarerPage extends State <CarerPage> {
                           (route) => false,
                     );
                   },
-                  style: AppStyles.botonPrincipal,
+                  style: ElevatedButton.styleFrom(
+                      backgroundColor: singleton.interfazColores.neutral,
+                      elevation: 5,
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(16),
+                      )
+                  ),
                   child: Text("Siguiente",
                     style: AppStyles.textoBoton
                   ),

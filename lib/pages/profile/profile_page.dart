@@ -1,4 +1,5 @@
 import 'package:app_medicamentos/pages/home_page.dart';
+import 'package:app_medicamentos/utils/singleton.dart';
 import 'package:flutter/material.dart';
 import 'package:app_medicamentos/pages/profile/edit_profile.dart';
 import 'package:app_medicamentos/pages/calendar/calendar.dart';
@@ -11,6 +12,8 @@ import 'package:page_transition/page_transition.dart';
 import 'package:app_medicamentos/constants.dart';
 import 'package:flutter_alarm_clock/flutter_alarm_clock.dart';
 
+import '../../utils/colorSheet.dart';
+
 class ProfilePage extends StatefulWidget {
   const ProfilePage({super.key});
 
@@ -21,11 +24,14 @@ class ProfilePage extends StatefulWidget {
 }
 
 class _ProfilePage extends State<ProfilePage> {
+  Singleton singleton = Singleton();
+
   int _currentIndex = 4;
   List<String> user = ["1", "2", "3", "4", "5", "6", "7", "8"];
 
   @override
   Widget build(BuildContext context) {
+    Singleton singleton = Singleton();
     /*var user = [
       widget.nombre,
       widget.apellidoP,
@@ -50,7 +56,7 @@ class _ProfilePage extends State<ProfilePage> {
             style: AppStyles.encabezado1,
           ),
           actions: const [],
-          backgroundColor: Colors.transparent,
+          backgroundColor: singleton.interfazColores.light,
           automaticallyImplyLeading: false,
           elevation: 0,
         ),
@@ -97,7 +103,7 @@ class _ProfilePage extends State<ProfilePage> {
                 fontWeight: FontWeight.bold,
               ),
             ),
-            SizedBox(height: 20.0,),
+            SizedBox(height: 10.0,),
             Padding(
               padding: const EdgeInsets.only(right: 5, bottom: 50),
               child: Align(
@@ -112,14 +118,15 @@ class _ProfilePage extends State<ProfilePage> {
                           (route) => false,
                     );
                   },
-                  backgroundColor: Color(0xFF09184D),
+                  heroTag: "Edit",
+                  backgroundColor: singleton.interfazColores.dark,
                   child: Icon(
                     Icons.edit
                   ),
                 ),
               ),
             ),
-            SizedBox(height: 20.0,),
+            SizedBox(height: 10.0,),
             Padding(
               padding: const EdgeInsets.only(right: 5, bottom: 50),
               child: Align(
@@ -134,9 +141,27 @@ class _ProfilePage extends State<ProfilePage> {
                           (route) => false,
                     );
                   },
-                  backgroundColor: Color(0xFF09184D),
+                  heroTag: "Message",
+                  backgroundColor: singleton.interfazColores.dark,
                   child: Icon(
                       Icons.message
+                  ),
+                ),
+              ),
+            ),
+            SizedBox(height: 10.0,),
+            Padding(
+              padding: const EdgeInsets.only(right: 5, bottom: 50),
+              child: Align(
+                alignment: Alignment.bottomRight,
+                child: FloatingActionButton.small(
+                  onPressed: () {
+                    muestraColorSheet(context);
+                  },
+                  heroTag: "Color",
+                  backgroundColor: singleton.interfazColores.dark,
+                  child: Icon(
+                      Icons.color_lens
                   ),
                 ),
               ),
