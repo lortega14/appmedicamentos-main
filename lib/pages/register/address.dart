@@ -1,3 +1,4 @@
+import 'package:app_medicamentos/utils/singleton.dart';
 import 'package:flutter/material.dart';
 import 'package:app_medicamentos/pages/register/birth_date_register.dart';
 import 'package:app_medicamentos/pages/register/pathologies.dart';
@@ -20,6 +21,7 @@ class Address extends StatefulWidget {
 class _Address extends State <Address> {
   @override
   Widget build(BuildContext context) {
+    Singleton singleton = Singleton();
     return Scaffold(
       resizeToAvoidBottomInset: false,
       backgroundColor: AppStyles.primaryBackground,
@@ -183,7 +185,13 @@ class _Address extends State <Address> {
                           (route) => false,
                     );
                   },
-                  style: AppStyles.botonPrincipal,
+                  style: ElevatedButton.styleFrom(
+                      backgroundColor: singleton.interfazColores.neutral,
+                      elevation: 5,
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(16),
+                      )
+                  ),
                   child: const Text("Siguiente",
                     style: AppStyles.textoBoton
                   ),

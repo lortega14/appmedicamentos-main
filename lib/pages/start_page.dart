@@ -1,4 +1,5 @@
 import 'package:app_medicamentos/pages/home_page.dart';
+import 'package:app_medicamentos/utils/singleton.dart';
 import 'package:flutter/material.dart';
 import 'package:app_medicamentos/pages/register/name_register.dart';
 import 'package:sqflite/sqflite.dart';
@@ -6,6 +7,7 @@ import 'package:path/path.dart';
 import 'package:app_medicamentos/constants.dart';
 
 class StartPage extends StatefulWidget {
+
   const StartPage({super.key});
 
   @override
@@ -15,6 +17,8 @@ class StartPage extends StatefulWidget {
 }
 
 class _StartPage extends State <StartPage> {
+  Singleton singleton = Singleton();
+
   @override
   Widget build(BuildContext context) {
     //select(context);
@@ -49,7 +53,13 @@ class _StartPage extends State <StartPage> {
                       (route) => false,
                   );
                 },
-                style: AppStyles.botonPrincipal,
+                style: ElevatedButton.styleFrom(
+                    backgroundColor: singleton.interfazColores.neutral,
+                    elevation: 5,
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(16),
+                    )
+                ),
                 child: Text("Registrarse",
                   style: AppStyles.textoBoton,
                 ),

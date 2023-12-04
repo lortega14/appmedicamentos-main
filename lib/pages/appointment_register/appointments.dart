@@ -1,3 +1,4 @@
+import 'package:app_medicamentos/utils/singleton.dart';
 import 'package:flutter/material.dart';
 import 'package:app_medicamentos/pages/home_page.dart';
 import 'package:app_medicamentos/pages/appointment_register/appointments_date.dart';
@@ -16,6 +17,7 @@ class AppointmentsPage extends StatefulWidget {
 }
 
 class _AppointmentsPage extends State <AppointmentsPage> {
+  Singleton singleton = Singleton();
 
   var maskFormatter = MaskTextInputFormatter(mask: '### ### ####', filter: {"#": RegExp(r'[0-9]')});
 
@@ -25,7 +27,7 @@ class _AppointmentsPage extends State <AppointmentsPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       resizeToAvoidBottomInset: false,
-      backgroundColor: Color(0xFFEDF2FA),
+      backgroundColor: Color(0xFFF6F5F4),
       appBar: PreferredSize(
         preferredSize: Size.fromHeight(60),
         child: AppBar(
@@ -36,7 +38,7 @@ class _AppointmentsPage extends State <AppointmentsPage> {
             ),
           ),
           leading: IconButton(
-            icon: const Icon(Icons.arrow_back_rounded, color: Color(0xFF09184D)),
+            icon: Icon(Icons.arrow_back_rounded, color: singleton.interfazColores.getColorDark()),
             onPressed: () {
               Navigator.pushAndRemoveUntil <dynamic>(
                 context,
@@ -48,7 +50,7 @@ class _AppointmentsPage extends State <AppointmentsPage> {
             },
           ),
           actions: const [],
-          backgroundColor: const Color(0xFFEDF2FA),
+          backgroundColor: const Color(0xFFF6F5F4),
           automaticallyImplyLeading: false,
           centerTitle: false,
           elevation: 0,
@@ -79,7 +81,7 @@ class _AppointmentsPage extends State <AppointmentsPage> {
             SizedBox(height: 10,),
             Container(
               decoration: ShapeDecoration(
-                color: Colors.white,
+                color: Color(0xFFF6F5F4),
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(12),
                 ),
@@ -100,13 +102,13 @@ class _AppointmentsPage extends State <AppointmentsPage> {
                   enabledBorder: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(15),
                       borderSide: const BorderSide(
-                          color: Colors.white,
+                          color: Color(0xFFF6F5F4),
                           width: 1,
                           style: BorderStyle.solid
                       )
                   ),
                   filled: true,
-                  fillColor: Colors.white,
+                  fillColor: Color(0xFFF6F5F4),
                 ),
                 onChanged: (text) {
                   setState(() {
@@ -134,7 +136,7 @@ class _AppointmentsPage extends State <AppointmentsPage> {
             SizedBox(height: 10,),
             Container(
               decoration: ShapeDecoration(
-                color: Colors.white,
+                color: Color(0xFFF6F5F4),
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(12),
                 ),
@@ -155,13 +157,13 @@ class _AppointmentsPage extends State <AppointmentsPage> {
                   enabledBorder: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(15),
                       borderSide: const BorderSide(
-                          color: Colors.white,
+                          color: Color(0xFFF6F5F4),
                           width: 1,
                           style: BorderStyle.solid
                       )
                   ),
                   filled: true,
-                  fillColor: Colors.white,
+                  fillColor: Color(0xFFF6F5F4),
                 ),
                 onChanged: (text) {
                   setState(() {
@@ -189,7 +191,7 @@ class _AppointmentsPage extends State <AppointmentsPage> {
             SizedBox(height: 10,),
             Container(
               decoration: ShapeDecoration(
-                color: Colors.white,
+                color: Color(0xFFF6F5F4),
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(12),
                 ),
@@ -210,13 +212,13 @@ class _AppointmentsPage extends State <AppointmentsPage> {
                   enabledBorder: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(15),
                       borderSide: const BorderSide(
-                          color: Colors.white,
+                          color: Color(0xFFF6F5F4),
                           width: 1,
                           style: BorderStyle.solid
                       )
                   ),
                   filled: true,
-                  fillColor: Colors.white,
+                  fillColor: Color(0xFFF6F5F4),
                 ),
                 onChanged: (text) {
                   setState(() {
@@ -244,7 +246,7 @@ class _AppointmentsPage extends State <AppointmentsPage> {
             SizedBox(height: 10,),
             Container(
               decoration: ShapeDecoration(
-                color: Colors.white,
+                color: Color(0xFFF6F5F4),
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(12),
                 ),
@@ -267,13 +269,13 @@ class _AppointmentsPage extends State <AppointmentsPage> {
                   enabledBorder: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(15),
                       borderSide: const BorderSide(
-                          color: Colors.white,
+                          color: Color(0xFFF6F5F4),
                           width: 1,
                           style: BorderStyle.solid
                       )
                   ),
                   filled: true,
-                  fillColor: Colors.white,
+                  fillColor: Color(0xFFF6F5F4),
                 ),
               ),
             ),
@@ -295,7 +297,7 @@ class _AppointmentsPage extends State <AppointmentsPage> {
                     );
                   },
                   style: ElevatedButton.styleFrom(
-                      backgroundColor: Color(0xFF0063C9),
+                      backgroundColor: singleton.interfazColores.neutral,
                       elevation: 5,
                       shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(16),

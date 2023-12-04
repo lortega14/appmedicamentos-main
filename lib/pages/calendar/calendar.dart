@@ -1,3 +1,4 @@
+import 'package:app_medicamentos/utils/singleton.dart';
 import 'package:flutter/material.dart';
 import 'package:app_medicamentos/pages/home_page.dart';
 import 'package:app_medicamentos/pages/profile/profile_page.dart';
@@ -21,6 +22,8 @@ class CalendarPage extends StatefulWidget{
 }
 
 class _CalendarPage extends State <CalendarPage>{
+  Singleton singleton = Singleton();
+
   int _currentIndex = 1;
   @override
   Widget build(BuildContext context){
@@ -33,9 +36,10 @@ class _CalendarPage extends State <CalendarPage>{
           title: Text(
             'Calendario',
             style: AppStyles.encabezado1,
+
           ),
           actions: const [],
-          backgroundColor: Colors.transparent,
+          backgroundColor: singleton.interfazColores.getColorLight(),
           automaticallyImplyLeading: false,
           centerTitle: false,
           elevation: 0,
@@ -54,8 +58,8 @@ class _CalendarPage extends State <CalendarPage>{
                   onSelectionChanged: (DateRangePickerSelectionChangedArgs args) {
                     CreateCards(context, args.value.toString());
                   },
-                  todayHighlightColor: Color(0xFF09184D),
-                  selectionColor: Color(0xFF09184D),
+                  todayHighlightColor: singleton.interfazColores.dark,
+                  selectionColor: singleton.interfazColores.dark,
                 ),
                 const SizedBox(height: 20.0,),
                 const Text(
@@ -137,14 +141,14 @@ class _CalendarPage extends State <CalendarPage>{
                   if (bandShow == 0)
                     Column(
                       children: [
-                        Button(color: 0xFF0D1C52,
+                        Button(color: singleton.interfazColores.dark.value,
                           ancho: 263,
                           alto: 71,
                           contenido: 'Agregar medicamento',
                           ruta: 0,
                         ),
                         const SizedBox(width: 0.0, height: 60.0,),
-                        Button(color: 0xFF0D1C52,
+                        Button(color: singleton.interfazColores.dark.value,
                           ancho: 263,
                           alto: 71,
                           contenido: 'Agregar cita médica',
@@ -158,7 +162,7 @@ class _CalendarPage extends State <CalendarPage>{
                       children: [
                         Text('Medicamento agregado con éxito',),
                         const SizedBox(width: 0.0, height: 60.0,),
-                        Button(color: 0xFF0063C9, ancho: 180, alto: 60, contenido: 'Aceptar', ruta: 2,),
+                        Button(color: singleton.interfazColores.neutral.value, ancho: 180, alto: 60, contenido: 'Aceptar', ruta: 2,),
                       ],
                     ),
 
@@ -167,7 +171,7 @@ class _CalendarPage extends State <CalendarPage>{
                       children: [
                         Text('Error al agregar medicamento',),
                         const SizedBox(width: 0.0, height: 60.0,),
-                        Button(color: 0xFF0063C9, ancho: 180, alto: 60, contenido: 'Aceptar', ruta: 2,),
+                        Button(color: singleton.interfazColores.neutral.value, ancho: 180, alto: 60, contenido: 'Aceptar', ruta: 2,),
                       ],
                     ),
 
@@ -176,7 +180,7 @@ class _CalendarPage extends State <CalendarPage>{
                       children: [
                         Text('Cita agregada con éxito',),
                         const SizedBox(width: 0.0, height: 60.0,),
-                        Button(color: 0xFF0063C9, ancho: 180, alto: 60, contenido: 'Aceptar', ruta: 2,),
+                        Button(color: singleton.interfazColores.neutral.value, ancho: 180, alto: 60, contenido: 'Aceptar', ruta: 2,),
                       ],
                     ),
 
@@ -185,7 +189,7 @@ class _CalendarPage extends State <CalendarPage>{
                       children: [
                         Text('Error al agregar cita',),
                         const SizedBox(width: 0.0, height: 60.0,),
-                        Button(color: 0xFF0063C9, ancho: 180, alto: 60, contenido: 'Aceptar', ruta: 2,),
+                        Button(color: singleton.interfazColores.neutral.value, ancho: 180, alto: 60, contenido: 'Aceptar', ruta: 2,),
                       ],
                     )
                 ],

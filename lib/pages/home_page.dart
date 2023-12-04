@@ -1,4 +1,5 @@
 import 'package:app_medicamentos/models/reminder_model.dart';
+import 'package:app_medicamentos/utils/singleton.dart';
 import 'package:flutter/material.dart';
 import 'package:app_medicamentos/pages/layout/bottom_navbar.dart';
 import 'package:app_medicamentos/pages/calendar/calendar.dart';
@@ -25,6 +26,8 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePage extends State<HomePage> {
+  Singleton singleton = Singleton();
+
   int _currentIndex = 0;
   String formattedDate = '';
 
@@ -50,7 +53,7 @@ class _HomePage extends State<HomePage> {
       home: Scaffold(
         backgroundColor: AppStyles.primaryBackground,
         appBar: AppBar(
-          backgroundColor: Colors.transparent,
+          backgroundColor: singleton.interfazColores.getColorLight(),
           elevation: 0,
           title: Row(
             children: [

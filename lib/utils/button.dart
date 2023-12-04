@@ -55,7 +55,7 @@ class Button extends StatelessWidget {
 
       },
       child: Text(contenido,
-        style: TextStyle(color: Colors.white, fontSize: 20,fontFamily: 'Roboto', ),
+        style: TextStyle(color: Color(0xFFF6F5F4), fontSize: 20,fontFamily: 'Roboto', ),
       ),
     );
   }

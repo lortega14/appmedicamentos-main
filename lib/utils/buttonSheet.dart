@@ -1,8 +1,10 @@
+import 'package:app_medicamentos/utils/singleton.dart';
 import 'package:flutter/material.dart';
 import 'package:app_medicamentos/utils/button.dart';
 import 'package:app_medicamentos/utils/texto.dart';
 
 void muestraButtonSheet(BuildContext context, int bandShow){
+  Singleton singleton = Singleton();
   //final int bandShow = 0;
   // band: revisar que valor tiene para mostrar los widgets qe necesites
   //final bool num = 0;
@@ -25,14 +27,14 @@ void muestraButtonSheet(BuildContext context, int bandShow){
                 if (bandShow == 0)
                   Column(
                     children: [
-                      Button(color: 0xFF0D1C52,
+                      Button(color: singleton.interfazColores.dark.value,
                         ancho: 263,
                         alto: 71,
                         contenido: 'Agregar medicamento',
                         ruta: 0,
                       ),
                       const SizedBox(width: 0.0, height: 60.0,),
-                      Button(color: 0xFF0D1C52,
+                      Button(color: singleton.interfazColores.dark.value,
                         ancho: 263,
                         alto: 71,
                         contenido: 'Agregar cita médica',
@@ -46,7 +48,7 @@ void muestraButtonSheet(BuildContext context, int bandShow){
                     children: [
                       Texto(contenido: 'Medicamento agregado con éxito',),
                       const SizedBox(width: 0.0, height: 60.0,),
-                      Button(color: 0xFF0063C9, ancho: 180, alto: 60, contenido: 'Aceptar', ruta: 2,),
+                      Button(color: singleton.interfazColores.neutral.value, ancho: 180, alto: 60, contenido: 'Aceptar', ruta: 2,),
                     ],
                   ),
 
@@ -55,7 +57,7 @@ void muestraButtonSheet(BuildContext context, int bandShow){
                     children: [
                       Texto(contenido: 'Error al agregar medicamento',),
                       const SizedBox(width: 0.0, height: 60.0,),
-                      Button(color: 0xFF0063C9, ancho: 180, alto: 60, contenido: 'Aceptar', ruta: 2,),
+                      Button(color: singleton.interfazColores.neutral.value, ancho: 180, alto: 60, contenido: 'Aceptar', ruta: 2,),
                     ],
                   ),
 
@@ -64,7 +66,7 @@ void muestraButtonSheet(BuildContext context, int bandShow){
                     children: [
                       Texto(contenido: 'Cita agregada con éxito',),
                       const SizedBox(width: 0.0, height: 60.0,),
-                      Button(color: 0xFF0063C9, ancho: 180, alto: 60, contenido: 'Aceptar', ruta: 2,),
+                      Button(color: singleton.interfazColores.neutral.value, ancho: 180, alto: 60, contenido: 'Aceptar', ruta: 2,),
                     ],
                   ),
 
@@ -73,7 +75,7 @@ void muestraButtonSheet(BuildContext context, int bandShow){
                     children: [
                       Texto(contenido: 'Error al agregar cita',),
                       const SizedBox(width: 0.0, height: 60.0,),
-                      Button(color: 0xFF0063C9, ancho: 180, alto: 60, contenido: 'Aceptar', ruta: 2,),
+                      Button(color: singleton.interfazColores.neutral.value, ancho: 180, alto: 60, contenido: 'Aceptar', ruta: 2,),
                     ],
                   )
               ],

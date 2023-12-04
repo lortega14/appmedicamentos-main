@@ -1,4 +1,5 @@
 
+import 'package:app_medicamentos/utils/singleton.dart';
 import 'package:flutter/material.dart';
 import 'package:app_medicamentos/pages/register/name_register.dart';
 import 'package:app_medicamentos/pages/register/address.dart';
@@ -19,6 +20,7 @@ class BirthDateRegister extends StatefulWidget {
 }
 
 class _BirthDateRegister extends State <BirthDateRegister> {
+  Singleton singleton = Singleton();
   var fechaNac;
 
   @override
@@ -78,9 +80,9 @@ class _BirthDateRegister extends State <BirthDateRegister> {
                 fechaNac = args.value.toString().split(' ')[0];
                 fechaController.text = fechaNac;
               },
-              todayHighlightColor: AppStyles.secondaryBlue,
-              selectionColor: AppStyles.primaryBlue,
-              backgroundColor: Colors.white,
+              todayHighlightColor: singleton.interfazColores.dark,
+              selectionColor: singleton.interfazColores.neutral,
+              backgroundColor: Color(0xFFF6F5F4),
             ),
             SizedBox(height: 30.0),
 
@@ -128,7 +130,13 @@ class _BirthDateRegister extends State <BirthDateRegister> {
                           (route) => false,
                     );
                   },
-                  style: AppStyles.botonPrincipal,
+                  style: ElevatedButton.styleFrom(
+                      backgroundColor: singleton.interfazColores.neutral,
+                      elevation: 5,
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(16),
+                      )
+                  ),
                   child: Text("Siguiente",
                     style: AppStyles.textoBoton
                   ),

@@ -1,5 +1,6 @@
 import 'package:app_medicamentos/models/medicament_model.dart';
 import 'package:app_medicamentos/pages/medicaments_register/medicaments_register.dart';
+import 'package:app_medicamentos/utils/singleton.dart';
 import 'package:flutter/material.dart';
 import 'package:app_medicamentos/pages/home_page.dart';
 import 'package:app_medicamentos/pages/profile/profile_page.dart';
@@ -21,6 +22,7 @@ class RecordsPage extends StatefulWidget{
 }
 
 class _RecordsPage extends State <RecordsPage>{
+  Singleton singleton = Singleton();
   int _currentIndex = 3;
 
   @override
@@ -38,7 +40,7 @@ class _RecordsPage extends State <RecordsPage>{
             style: AppStyles.encabezado1,
           ),
           actions: const [],
-          backgroundColor: Colors.transparent,
+          backgroundColor: singleton.interfazColores.light,
           automaticallyImplyLeading: false,
           elevation: 0,
         ),

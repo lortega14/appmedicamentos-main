@@ -1,6 +1,7 @@
 import 'package:app_medicamentos/database/conection.dart';
 import 'package:app_medicamentos/models/user_model.dart';
 import 'package:app_medicamentos/pages/register/name_register.dart';
+import 'package:app_medicamentos/utils/singleton.dart';
 import 'package:flutter/material.dart';
 import 'package:app_medicamentos/pages/register/address.dart';
 import 'package:app_medicamentos/pages/register/carer.dart';
@@ -23,6 +24,7 @@ class Pathologies extends StatefulWidget {
 }
 
 class _Pathologies extends State <Pathologies> {
+  Singleton singleton = Singleton();
   var patologias;
   final otraspatController = TextEditingController();
 
@@ -93,7 +95,7 @@ class _Pathologies extends State <Pathologies> {
                       submitButtonText: 'Aceptar',
                       textStyle: AppStyles.texto1,
 
-                      dropdownColor: Colors.white,
+                      dropdownColor: Color(0xFFF6F5F4),
 
                       dropdownRadius: 0,
                       //displayCompleteItem: true, //Muestra los campos seleccionados
@@ -175,7 +177,13 @@ class _Pathologies extends State <Pathologies> {
                               (route) => false,
                         );
                       },
-                      style: AppStyles.botonPrincipal,
+                      style: ElevatedButton.styleFrom(
+                          backgroundColor: singleton.interfazColores.neutral,
+                          elevation: 5,
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(16),
+                          )
+                      ),
                       child: Text("Siguiente",
                         style: AppStyles.textoBoton
                       ),

@@ -60,13 +60,13 @@ class _EditProfile extends State <EditProfile> {
               enabledBorder: OutlineInputBorder(
                   borderRadius: BorderRadius.circular(15),
                   borderSide: const BorderSide(
-                      color: Colors.white,
+                      color: Color(0xFFF6F5F4),
                       width: 1,
                       style: BorderStyle.solid
                   )
               ),
               filled: true,
-              fillColor: Colors.white,
+              fillColor: Color(0xFFF6F5F4),
               hintText: 'Nombre(s)',
             ),
           ),
@@ -79,14 +79,14 @@ class _EditProfile extends State <EditProfile> {
               enabledBorder: OutlineInputBorder(
                   borderRadius: BorderRadius.circular(15),
                   borderSide: const BorderSide(
-                      color: Colors.white,
+                      color: Color(0xFFF6F5F4),
                       width: 1,
                       style: BorderStyle.solid
 
                   )
               ),
               filled: true,
-              fillColor: Colors.white,
+              fillColor: Color(0xFFF6F5F4),
               hintText: 'Apellidos',
             ),
           ),
@@ -99,14 +99,14 @@ class _EditProfile extends State <EditProfile> {
               enabledBorder: OutlineInputBorder(
                   borderRadius: BorderRadius.circular(15),
                   borderSide: const BorderSide(
-                      color: Colors.white,
+                      color: Color(0xFFF6F5F4),
                       width: 1,
                       style: BorderStyle.solid
 
                   )
               ),
               filled: true,
-              fillColor: Colors.white,
+              fillColor: Color(0xFFF6F5F4),
               hintText: 'Teléfono',
             ),
           ),

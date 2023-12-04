@@ -33,7 +33,7 @@ class _MessageState extends State<Message> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.white,
+      backgroundColor: Color(0xFFF6F5F4),
       appBar: PreferredSize(
         preferredSize: Size.fromHeight(60),
         child: AppBar(
@@ -53,7 +53,7 @@ class _MessageState extends State<Message> {
             },
           ),
           actions: const [],
-          backgroundColor: Colors.white,
+          backgroundColor: Color(0xFFF6F5F4),
           automaticallyImplyLeading: false,
           centerTitle: false,
           elevation: 0,
