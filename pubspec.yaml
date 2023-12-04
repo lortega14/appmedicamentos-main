@@ -23,6 +23,9 @@ dependencies:
   google_maps_flutter: ^2.5.0
   http: ^1.1.0
   device_preview: ^1.1.0
+  image_picker: ^1.0.4
+  fl_chart: ^0.65.0
+  star_rating: ^0.11.0
 
 dev_dependencies:
   flutter_test:

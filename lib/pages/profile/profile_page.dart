@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:app_medicamentos/pages/home_page.dart';
@@ -6,13 +8,15 @@ import 'package:app_medicamentos/pages/profile/edit_profile.dart';
 import 'package:app_medicamentos/pages/calendar/calendar.dart';
 import 'package:app_medicamentos/pages/records/records.dart';
 import 'package:app_medicamentos/pages/layout/bottom_navbar.dart';
+import 'package:image_picker/image_picker.dart';
 import 'package:sqflite/sqflite.dart';
-import 'package:path/path.dart';
+import 'package:path/path.dart' as PATH;
 import 'package:app_medicamentos/utils/msgcall.dart';
 import 'package:page_transition/page_transition.dart';
 import 'package:app_medicamentos/constants.dart';
 import 'package:flutter_alarm_clock/flutter_alarm_clock.dart';
 import '../../utils/colorSheet.dart';
+import '../feedback/feedback_page.dart';
 
 class ProfilePage extends StatefulWidget {
   const ProfilePage({Key? key}) : super(key: key);
@@ -25,6 +29,7 @@ class ProfilePage extends StatefulWidget {
 
 class _ProfilePage extends State<ProfilePage> {
   Singleton singleton = Singleton();
+  XFile ? _selectedImage;
 
   int _currentIndex = 4;
   List<String> user = ["1", "2", "3", "4", "5", "6", "7", "8"];
@@ -63,6 +68,11 @@ class _ProfilePage extends State<ProfilePage> {
             mainAxisAlignment: MainAxisAlignment.center,
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
+              Container(
+                alignment: Alignment.center,
+                child: profilePicture(),
+              ),
+              SizedBox(height: 20),
               Text(
                 'Nombre: ' +
                     nombreController.text +
@@ -99,16 +109,72 @@ class _ProfilePage extends State<ProfilePage> {
                   fontWeight: FontWeight.bold,
                 ),
               ),
-              SizedBox(height: 20.0,),
+              const SizedBox(height: 20.0,),
               Text(
                 'Cuidador: ' + cuidadorController.text,
-                style: TextStyle(
+                style:  const TextStyle(
                   fontFamily: 'Roboto',
                   fontSize: 16,
                   fontWeight: FontWeight.bold,
                 ),
               ),
-              SizedBox(height: 10.0,),
+              const SizedBox(height: 10.0,),
+              Row(
+                children: [
+                  FloatingActionButton.small(
+                    onPressed: () {
+                      Navigator.pushAndRemoveUntil<dynamic>(
+                        context,
+                        MaterialPageRoute<dynamic>(
+                          builder: (BuildContext context) => const EditProfile(),
+                        ),
+                            (route) => false,
+                      );
+                    },
+                    heroTag: "Edit",
+                    backgroundColor: singleton.interfazColores.dark,
+                    child: const Icon(Icons.edit),
+                  ),
+                  FloatingActionButton.small(
+                    onPressed: () {
+                      Navigator.pushAndRemoveUntil<dynamic>(
+                        context,
+                        MaterialPageRoute<dynamic>(
+                          builder: (BuildContext context) => const Message(),
+                        ),
+                            (route) => false,
+                      );
+                    },
+                    heroTag: "Message",
+                    backgroundColor: singleton.interfazColores.dark,
+                    child: const Icon(Icons.message),
+                  ),
+                  FloatingActionButton.small(
+                    onPressed: () {
+                      muestraColorSheet(context);
+                    },
+                    heroTag: "Color",
+                    backgroundColor: singleton.interfazColores.dark,
+                    child: const Icon(Icons.color_lens),
+                  ),
+                  FloatingActionButton.small(
+                    onPressed: () {
+                      Navigator.pushAndRemoveUntil(
+                        context,
+                        PageTransition(
+                          type: PageTransitionType.fade,
+                          child: const feedbackPage(),
+                        ),
+                            (route) => false,
+                      );
+                    },
+                    heroTag: "Feedback",
+                    backgroundColor: singleton.interfazColores.dark,
+                    child: const Icon(Icons.feedback),
+                  )
+                ],
+              ),
+              /*
               Padding(
                 padding: const EdgeInsets.only(right: 5, bottom: 50),
                 child: Align(
@@ -165,6 +231,7 @@ class _ProfilePage extends State<ProfilePage> {
                   ),
                 ),
               ),
+              */
             ],
           ),
         ),
@@ -224,7 +291,7 @@ class _ProfilePage extends State<ProfilePage> {
         numExteriorController.text == "" &&
         cuidadorController.text == "") {
       Database database = await openDatabase(
-        join(await getDatabasesPath(), 'medicamentos.db'),
+        PATH.join(await getDatabasesPath(), 'medicamentos.db'),
         version: 1,
       );
 
@@ -261,6 +328,85 @@ class _ProfilePage extends State<ProfilePage> {
             (route) => false,
       );
     }
+  }
+
+  Widget profilePicture(){
+    return Stack(
+      children: [
+        CircleAvatar(
+          radius: 80.0,
+          backgroundImage: singleton.returnImage() == null ? null : FileImage(File(singleton.returnImage()!.path)),
+        ),
+        Positioned(
+          bottom: 20,
+          right: 20,
+          child: InkWell(
+              onTap: (){
+                showModalBottomSheet(
+                    context: context,
+                    builder: ((builder) => bottomSheet())
+                );
+              },
+              child: const Icon(
+                Icons.camera_alt,
+                color: Colors.blue,
+                size: 28.0,
+              )
+          ),
+        )
+      ],
+    );
+  }
+
+  Widget bottomSheet(){
+    return Container(
+      height: 100,
+      width: MediaQuery.of(context).size.width,
+      margin: const EdgeInsets.symmetric(
+          horizontal: 20,
+          vertical: 20
+      ),
+      child: Column(
+        children: [
+          const Text("Elige una foto de perfil:", style: TextStyle(fontSize: 20)),
+          SizedBox(height: 20),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              TextButton(
+                onPressed: (){
+                  _pickImageFromCamera();
+                },
+                child: Icon(Icons.camera),
+              ),
+              TextButton(
+                  onPressed: (){
+                    _pickImageFromGallery();
+                  },
+                  child: Icon(Icons.photo)
+              )
+            ],
+          )
+        ],
+      ),
+    );
+  }
+
+  Future _pickImageFromGallery() async{
+    _selectedImage = await ImagePicker().pickImage(source: ImageSource.gallery);
+    singleton.saveImage(_selectedImage);
+    setState(() {
+
+    });
+  }
+
+
+  Future _pickImageFromCamera() async{
+    _selectedImage = await ImagePicker().pickImage(source: ImageSource.camera);
+    singleton.saveImage(_selectedImage);
+    setState(() {
+
+    });
   }
 }
 
