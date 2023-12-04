@@ -338,23 +338,6 @@ class _RecordsPage extends State <RecordsPage>{
                       ),
                     ),
                   ),
-                  /*SizedBox(height: 1.0, width: 1.0,),
-                  Padding(
-                    padding: const EdgeInsets.only(right: 5, bottom: 0),
-                    child: Align(
-                      alignment: Alignment.bottomRight,
-                      child: FloatingActionButton.small(
-                        heroTag: "EditC" + medicamentos[i]['id_medicamento'].toString(),
-                        onPressed: () {
-                          DeleteAppointment(citas[i]['id_cita'].toString());
-                        },
-                        backgroundColor: Color(0xFF09184D),
-                        child: Icon(
-                            Icons.edit
-                        ),
-                      ),
-                    ),
-                  ),*/
                 ]
               )
             )

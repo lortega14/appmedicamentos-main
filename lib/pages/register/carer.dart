@@ -58,137 +58,139 @@ class _CarerPage extends State <CarerPage> {
         ),
       ),
 
-      body: Padding(
-        padding: const EdgeInsets.only(left: 15.0, right: 15.0, top: 30.0),
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.start,
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: <Widget>[
+      body: SingleChildScrollView(
+        child: Padding(
+          padding: const EdgeInsets.only(left: 15.0, right: 15.0, top: 30.0),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.start,
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: <Widget>[
 
-            Align(
-              alignment: Alignment.centerLeft,
-              child: const Padding(
-                padding: const EdgeInsets.only(left: 5.0),
-                child: Text(
-                  'Nombre(s)',
-                  textAlign: TextAlign.left,
-                  style: AppStyles.texto1,
-                ),
-              ),
-            ),
-            const SizedBox(height: 10.0),
-            Container(
-              decoration: AppStyles.contenedorTextForm,
-              child: Padding(
-                padding: const EdgeInsets.all(5.0),
-                child:TextFormField(
-                  controller: nombreCuidadorController,
-                  obscureText: false,
-                  textAlign: TextAlign.left,
-                  decoration: AppStyles.textFieldEstilo,
-                  style: AppStyles.texto1,
-                  onChanged: (text) {
-                    setState(() {
-                      convertoUpperCase(text, nombreCuidadorController, 0);
-                    });
-                  },
-                ),
-              ),
-            ),
-            const SizedBox(height: 30.0),
-
-            const Align(
-              alignment: Alignment.centerLeft,
-              child: Padding(
-                padding: const EdgeInsets.only(left: 5.0),
-                child: Text(
-                    'Apellido(s)',
+              Align(
+                alignment: Alignment.centerLeft,
+                child: const Padding(
+                  padding: const EdgeInsets.only(left: 5.0),
+                  child: Text(
+                    'Nombre(s)',
                     textAlign: TextAlign.left,
-                    style: AppStyles.texto1
-                ),
-              ),
-            ),
-            const SizedBox(height: 10.0),
-            Container(
-              decoration: AppStyles.contenedorTextForm,
-              child: Padding(
-                padding: const EdgeInsets.all(5.0),
-                child: TextFormField(
-                  controller: apellidoCuidadorController,
-                  obscureText: false,
-                  textAlign: TextAlign.left,
-                  decoration: AppStyles.textFieldEstilo,
-                  style: AppStyles.texto1,
-                  onChanged: (text) {
-                    setState(() {
-                      convertoUpperCase(text, apellidoCuidadorController, 0);
-                    });
-                  },
-                ),
-              ),
-            ),
-            const SizedBox(height: 30.0),
-
-            const Align(
-              alignment: Alignment.centerLeft,
-              child: Padding(
-                padding: const EdgeInsets.only(left: 5.0),
-                child: Text(
-                    'Número de telefono',
-                    textAlign: TextAlign.left,
-                    style: AppStyles.texto1
-                ),
-              ),
-            ),
-            const SizedBox(height: 10.0),
-            Container(
-              decoration: AppStyles.contenedorTextForm,
-              child: Padding(
-                padding: const EdgeInsets.all(5.0),
-                child: TextFormField(
-                  controller: telefonoCuidadorController,
-                  keyboardType: TextInputType.phone,
-                  inputFormatters: [maskFormatter],
-                  obscureText: false,
-                  textAlign: TextAlign.left,
-                  decoration: AppStyles.textFieldEstilo,
-                  style: AppStyles.texto1,
-                ),
-              ),
-            ),
-            SizedBox(height: 20.0,),
-            Padding(
-              padding: EdgeInsets.fromLTRB(0, 50, 0, 0),
-              child: Container(
-                width: AppStyles.anchoBoton,
-                height: AppStyles.altoBoton,
-                child: ElevatedButton(
-                  onPressed: () {
-                    register();
-                    Navigator.pushAndRemoveUntil <dynamic>(
-                      context,
-                      MaterialPageRoute <dynamic>(
-                          builder: (BuildContext context) => HomePage()
-                      ),
-                          (route) => false,
-                    );
-                  },
-                  style: ElevatedButton.styleFrom(
-                      backgroundColor: singleton.interfazColores.neutral,
-                      elevation: 5,
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(16),
-                      )
-                  ),
-                  child: Text("Siguiente",
-                    style: AppStyles.textoBoton
+                    style: AppStyles.texto1,
                   ),
                 ),
               ),
-            ),
-          ],
+              const SizedBox(height: 10.0),
+              Container(
+                decoration: AppStyles.contenedorTextForm,
+                child: Padding(
+                  padding: const EdgeInsets.all(5.0),
+                  child:TextFormField(
+                    controller: nombreCuidadorController,
+                    obscureText: false,
+                    textAlign: TextAlign.left,
+                    decoration: AppStyles.textFieldEstilo,
+                    style: AppStyles.texto1,
+                    onChanged: (text) {
+                      setState(() {
+                        convertoUpperCase(text, nombreCuidadorController, 0);
+                      });
+                    },
+                  ),
+                ),
+              ),
+              const SizedBox(height: 30.0),
+
+              const Align(
+                alignment: Alignment.centerLeft,
+                child: Padding(
+                  padding: const EdgeInsets.only(left: 5.0),
+                  child: Text(
+                      'Apellido(s)',
+                      textAlign: TextAlign.left,
+                      style: AppStyles.texto1
+                  ),
+                ),
+              ),
+              const SizedBox(height: 10.0),
+              Container(
+                decoration: AppStyles.contenedorTextForm,
+                child: Padding(
+                  padding: const EdgeInsets.all(5.0),
+                  child: TextFormField(
+                    controller: apellidoCuidadorController,
+                    obscureText: false,
+                    textAlign: TextAlign.left,
+                    decoration: AppStyles.textFieldEstilo,
+                    style: AppStyles.texto1,
+                    onChanged: (text) {
+                      setState(() {
+                        convertoUpperCase(text, apellidoCuidadorController, 0);
+                      });
+                    },
+                  ),
+                ),
+              ),
+              const SizedBox(height: 30.0),
+
+              const Align(
+                alignment: Alignment.centerLeft,
+                child: Padding(
+                  padding: const EdgeInsets.only(left: 5.0),
+                  child: Text(
+                      'Número de telefono',
+                      textAlign: TextAlign.left,
+                      style: AppStyles.texto1
+                  ),
+                ),
+              ),
+              const SizedBox(height: 10.0),
+              Container(
+                decoration: AppStyles.contenedorTextForm,
+                child: Padding(
+                  padding: const EdgeInsets.all(5.0),
+                  child: TextFormField(
+                    controller: telefonoCuidadorController,
+                    keyboardType: TextInputType.phone,
+                    inputFormatters: [maskFormatter],
+                    obscureText: false,
+                    textAlign: TextAlign.left,
+                    decoration: AppStyles.textFieldEstilo,
+                    style: AppStyles.texto1,
+                  ),
+                ),
+              ),
+              SizedBox(height: 20.0,),
+              Padding(
+                padding: EdgeInsets.fromLTRB(0, 150, 0, 30),
+                child: Container(
+                  width: AppStyles.anchoBoton,
+                  height: AppStyles.altoBoton,
+                  child: ElevatedButton(
+                    onPressed: () {
+                      register();
+                      Navigator.pushAndRemoveUntil <dynamic>(
+                        context,
+                        MaterialPageRoute <dynamic>(
+                            builder: (BuildContext context) => HomePage()
+                        ),
+                            (route) => false,
+                      );
+                    },
+                    style: ElevatedButton.styleFrom(
+                        backgroundColor: singleton.interfazColores.neutral,
+                        elevation: 5,
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(16),
+                        )
+                    ),
+                    child: Text("Siguiente",
+                        style: AppStyles.textoBoton
+                    ),
+                  ),
+                ),
+              ),
+            ],
+          ),
         ),
-      ),
+      )
     );
   }
 

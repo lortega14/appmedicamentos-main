@@ -6,7 +6,6 @@ import 'package:app_medicamentos/pages/home_page.dart';
 import 'package:sqflite/sqflite.dart';
 import 'package:path/path.dart';
 import 'package:syncfusion_flutter_datepicker/datepicker.dart';
-
 import '../calendar/calendar.dart';
 import '../records/records.dart';
 import 'package:app_medicamentos/utils/buttonSheet.dart';
@@ -61,77 +60,79 @@ class _AppointmentsDatePage extends State <AppointmentsDatePage> {
         ),
       ),
 
-      body: Padding(
-        padding: const EdgeInsets.all(15.0),
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: <Widget>[
-            SfDateRangePicker(
-              selectionMode: DateRangePickerSelectionMode.single,
-              showNavigationArrow: true,
-              onSelectionChanged: (DateRangePickerSelectionChangedArgs args) {
+      body: SingleChildScrollView(
+        child: Padding(
+          padding: const EdgeInsets.all(15.0),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: <Widget>[
+              SfDateRangePicker(
+                selectionMode: DateRangePickerSelectionMode.single,
+                showNavigationArrow: true,
+                onSelectionChanged: (DateRangePickerSelectionChangedArgs args) {
                   appointmentDate = args.value;
-              },
-              todayHighlightColor: singleton.interfazColores.getColorDark(),
-              selectionColor: singleton.interfazColores.getColorDark(),
-            ),
-            SizedBox(height: 20.0,),
-            TextField(
-              controller: timeinput, //editing controller of this TextField
-              decoration: InputDecoration(
-                  icon: Icon(Icons.timer), //icon of text field
-                  labelText: "Hora" //label text of field
+                },
+                todayHighlightColor: singleton.interfazColores.getColorDark(),
+                selectionColor: singleton.interfazColores.getColorDark(),
               ),
-              readOnly: true,  //set it true, so that user will not able to edit text
-              onTap: () async {
-                TimeOfDay? pickedTime =  await showTimePicker(
-                  initialTime: TimeOfDay.now(),
-                  context: context,
-                );
+              SizedBox(height: 20.0,),
+              TextField(
+                controller: timeinput, //editing controller of this TextField
+                decoration: InputDecoration(
+                    icon: Icon(Icons.timer), //icon of text field
+                    labelText: "Hora" //label text of field
+                ),
+                readOnly: true,  //set it true, so that user will not able to edit text
+                onTap: () async {
+                  TimeOfDay? pickedTime =  await showTimePicker(
+                    initialTime: TimeOfDay.now(),
+                    context: context,
+                  );
 
-                if(pickedTime != null ){
-                  print(pickedTime.format(context));   //output 10:51 PM
+                  if(pickedTime != null ){
+                    print(pickedTime.format(context));   //output 10:51 PM
 
-                  String time = pickedTime.toString().split("(")[1];
-                  time = time.split(")")[0];
-                  setState(() {
-                    timeinput.text = time; //set the value of text field.
-                  });
-                }else{
-                  print("Time is not selected");
-                }
-              },
-            ),
-            Padding(
-              padding: EdgeInsets.fromLTRB(0, 100, 0, 0),
-              child: Container(
-                width: 193,
-                height: 77,
-                child: ElevatedButton(
-                  onPressed: () async {
-                    int result = await RegisterAppointment();
-                    muestraButtonSheet(context, result);
+                    String time = pickedTime.toString().split("(")[1];
+                    time = time.split(")")[0];
+                    setState(() {
+                      timeinput.text = time; //set the value of text field.
+                    });
+                  }else{
+                    print("Time is not selected");
+                  }
+                },
+              ),
+              Padding(
+                padding: EdgeInsets.fromLTRB(0, 180, 0, 0),
+                child: Container(
+                  width: 193,
+                  height: 77,
+                  child: ElevatedButton(
+                    onPressed: () async {
+                      int result = await RegisterAppointment();
+                      muestraButtonSheet(context, result);
 
-                  },
-                  style: ElevatedButton.styleFrom(
-                      backgroundColor: singleton.interfazColores.getColorNeutral(),
-                      elevation: 5,
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(16),
-                      )
-                  ),
-                  child: Text("Siguiente",
-                    style: TextStyle(
-                        fontSize: 26
+                    },
+                    style: ElevatedButton.styleFrom(
+                        backgroundColor: singleton.interfazColores.getColorNeutral(),
+                        elevation: 5,
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(16),
+                        )
+                    ),
+                    child: Text("Siguiente",
+                      style: TextStyle(
+                          fontSize: 26
+                      ),
                     ),
                   ),
                 ),
-              ),
-            )
-          ],
+              )
+            ],
+          ),
         ),
-      ),
+      )
     );
   }
 

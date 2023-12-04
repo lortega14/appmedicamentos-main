@@ -379,7 +379,7 @@ class _MedicamentNameRegister extends State <MedicamentNameRegister> {
 
               const SizedBox(height: 20.0,),
               Padding(
-                padding: EdgeInsets.fromLTRB(0, 60, 0, 0),
+                padding: EdgeInsets.fromLTRB(0, 200, 0, 0),
                 child: Container(
                   width: 193,
                   height: 77,

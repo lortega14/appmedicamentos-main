@@ -1,4 +1,3 @@
-import 'package:app_medicamentos/models/reminder_model.dart';
 import 'package:app_medicamentos/utils/singleton.dart';
 import 'package:flutter/material.dart';
 import 'package:app_medicamentos/pages/layout/bottom_navbar.dart';
@@ -8,13 +7,11 @@ import 'package:app_medicamentos/pages/profile/profile_page.dart';
 import 'package:app_medicamentos/utils/button.dart';
 import 'package:intl/intl.dart';
 import 'package:app_medicamentos/utils/texto.dart';
-import 'package:app_medicamentos/models/medicament_model.dart';
 import 'package:sqflite/sqflite.dart';
 import 'package:path/path.dart' as Path;
 import 'package:page_transition/page_transition.dart';
 import 'package:app_medicamentos/constants.dart';
 import 'package:intl/date_symbol_data_local.dart';
-import 'package:flutter_alarm_clock/flutter_alarm_clock.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});

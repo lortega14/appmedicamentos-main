@@ -25,49 +25,53 @@ class _StartPage extends State <StartPage> {
 
     return Scaffold(
       backgroundColor: AppStyles.primaryBackground,
-      body: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        crossAxisAlignment: CrossAxisAlignment.center,
-        children: <Widget>[
-          Padding(
-            padding: EdgeInsets.fromLTRB(55, 0, 55, 100),
-            child: Container(
-              child: Image(
-                image: AssetImage('assets/images/logo_apesaam.png'),
+      body: SingleChildScrollView(
+        child: Padding(
+          padding: EdgeInsets.all(30.0),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: <Widget>[
+              Padding(
+                padding: EdgeInsets.fromLTRB(55, 150, 55, 200),
+                child: Container(
+                  child: Image(
+                    image: AssetImage('assets/images/logo_apesaam.png'),
+                  ),
+                ),
               ),
-            ),
+              Padding(
+                padding: EdgeInsets.fromLTRB(0, 100, 0, 0),
+                child: Container(
+                  width: AppStyles.anchoBoton,
+                  height: AppStyles.altoBoton,
+                  child: ElevatedButton(
+                    onPressed: () {
+                      Navigator.pushAndRemoveUntil <dynamic>(
+                        context,
+                        MaterialPageRoute <dynamic>(
+                            builder: (BuildContext context) => const NameRegister()
+                        ),
+                            (route) => false,
+                      );
+                    },
+                    style: ElevatedButton.styleFrom(
+                        backgroundColor: singleton.interfazColores.neutral,
+                        elevation: 5,
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(16),
+                        )
+                    ),
+                    child: Text("Registrarse",
+                      style: AppStyles.textoBoton,
+                    ),
+                  ),
+                ),
+              )
+            ],
           ),
-
-          Padding(
-            padding: EdgeInsets.fromLTRB(0, 100, 0, 0),
-            child: Container(
-              width: AppStyles.anchoBoton,
-              height: AppStyles.altoBoton,
-              child: ElevatedButton(
-                onPressed: () {
-                  Navigator.pushAndRemoveUntil <dynamic>(
-                      context,
-                      MaterialPageRoute <dynamic>(
-                          builder: (BuildContext context) => const NameRegister()
-                      ),
-                      (route) => false,
-                  );
-                },
-                style: ElevatedButton.styleFrom(
-                    backgroundColor: singleton.interfazColores.neutral,
-                    elevation: 5,
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(16),
-                    )
-                ),
-                child: Text("Registrarse",
-                  style: AppStyles.textoBoton,
-                ),
-              ),
-            ),
-          )
-        ],
-      ),
+        )
+      )
     );
   }
 

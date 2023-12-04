@@ -161,7 +161,7 @@ class _Pathologies extends State <Pathologies> {
                 const SizedBox(height: 20,),
 
                 Padding(
-                  padding: EdgeInsets.fromLTRB(0, 150, 0, 0),
+                  padding: EdgeInsets.fromLTRB(0, 150, 0, 30),
                   child: Container(
                     width: AppStyles.anchoBoton,
                     height: AppStyles.altoBoton,

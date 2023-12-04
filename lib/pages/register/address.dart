@@ -52,155 +52,157 @@ class _Address extends State <Address> {
         ),
       ),
 
-      body: Padding(
-        padding: const EdgeInsets.only(left: 15.0, right: 15.0, top: 20.0),
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.start,
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: <Widget>[
-            Align(
-              alignment: Alignment.centerLeft,
-              child: const Padding(
-                padding: const EdgeInsets.only(left: 5.0),
-                child: Text(
-                  'Ingrese su domicilio (opcional)',
-                  textAlign: TextAlign.left,
-                  style: AppStyles.texto1,
-                ),
-              ),
-            ),
-            SizedBox(height: 20.0),
-
-            Align(
-              alignment: Alignment.centerLeft,
-              child: const Padding(
-                padding: const EdgeInsets.only(left: 5.0),
-                child: Text(
-                  'Calle',
-                  textAlign: TextAlign.left,
-                  style: AppStyles.texto1,
-                ),
-              ),
-            ),
-            const SizedBox(height: 10.0),
-            Container(
-              decoration: AppStyles.contenedorTextForm,
-              child: Padding(
-                padding: const EdgeInsets.all(5.0),
-                child: TextFormField(
-                  controller: calleController,
-                  obscureText: false,
-                  textAlign: TextAlign.left,
-                  decoration: AppStyles.textFieldEstilo,
-                  style: AppStyles.texto1,
-                  onChanged: (text) {
-                    setState(() {
-                      convertFirstWordUpperCase(text, calleController);
-                    });
-                  },
-                ),
-              ),
-            ),
-            const SizedBox(height: 30.0),
-
-
-            const Align(
-              alignment: Alignment.centerLeft,
-              child: Padding(
-                padding: const EdgeInsets.only(left: 5.0),
-                child: Text(
-                  'Colonia',
-                  textAlign: TextAlign.left,
-                  style: AppStyles.texto1
-                ),
-              ),
-            ),
-            const SizedBox(height: 10.0),
-            Container(
-              decoration: AppStyles.contenedorTextForm,
-              child: Padding(
-                padding: const EdgeInsets.all(5.0),
-                child: TextFormField(
-                  controller: coloniaController,
-                  obscureText: false,
-                  textAlign: TextAlign.left,
-                  decoration: AppStyles.textFieldEstilo,
-                  style: AppStyles.texto1,
-                  onChanged: (text) {
-                    setState(() {
-                      convertFirstWordUpperCase(text, coloniaController);
-                    });
-                  },
-                ),
-              ),
-            ),
-            const SizedBox(height: 30.0),
-
-
-            Align(
-              alignment: Alignment.centerLeft,
-              child: Padding(
-                padding: const EdgeInsets.only(left: 5.0),
-                child: Text(
-                  'Número exterior',
-                  textAlign: TextAlign.left,
-                  style: AppStyles.texto1
-                ),
-              ),
-            ),
-            const SizedBox(height: 10.0,),
-            Container(
-              decoration: AppStyles.contenedorTextForm,
-              child: Padding(
-                padding: const EdgeInsets.all(5.0),
-                child: TextFormField(
-                  controller: numExteriorController,
-                  obscureText: false,
-                  textAlign: TextAlign.left,
-                  decoration: AppStyles.textFieldEstilo,
-                  style: AppStyles.texto1,
-                  onChanged: (text) {
-                    setState(() {
-                      convertFirstWordUpperCase(text, numExteriorController);
-                    });
-                  },
-                ),
-              ),
-            ),
-
-
-            Padding(
-              padding: EdgeInsets.fromLTRB(0, 30, 0, 0),
-              child: Container(
-                width: AppStyles.anchoBoton,
-                height: AppStyles.altoBoton,
-                child: ElevatedButton(
-                  onPressed: () {
-                    SetUser();
-                    Navigator.pushAndRemoveUntil <dynamic>(
-                      context,
-                      MaterialPageRoute <dynamic>(
-                          builder: (BuildContext context) => Pathologies(user: widget.user,)
-                      ),
-                          (route) => false,
-                    );
-                  },
-                  style: ElevatedButton.styleFrom(
-                      backgroundColor: singleton.interfazColores.neutral,
-                      elevation: 5,
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(16),
-                      )
-                  ),
-                  child: const Text("Siguiente",
-                    style: AppStyles.textoBoton
+      body: SingleChildScrollView(
+        child: Padding(
+          padding: EdgeInsets.all(12),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.start,
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: <Widget>[
+              Align(
+                alignment: Alignment.centerLeft,
+                child: const Padding(
+                  padding: const EdgeInsets.only(left: 5.0),
+                  child: Text(
+                    'Ingrese su domicilio (opcional)',
+                    textAlign: TextAlign.left,
+                    style: AppStyles.texto1,
                   ),
                 ),
               ),
-            )
-          ],
+              SizedBox(height: 20.0),
+
+              Align(
+                alignment: Alignment.centerLeft,
+                child: const Padding(
+                  padding: const EdgeInsets.only(left: 5.0),
+                  child: Text(
+                    'Calle',
+                    textAlign: TextAlign.left,
+                    style: AppStyles.texto1,
+                  ),
+                ),
+              ),
+              const SizedBox(height: 10.0),
+              Container(
+                decoration: AppStyles.contenedorTextForm,
+                child: Padding(
+                  padding: const EdgeInsets.all(5.0),
+                  child: TextFormField(
+                    controller: calleController,
+                    obscureText: false,
+                    textAlign: TextAlign.left,
+                    decoration: AppStyles.textFieldEstilo,
+                    style: AppStyles.texto1,
+                    onChanged: (text) {
+                      setState(() {
+                        convertFirstWordUpperCase(text, calleController);
+                      });
+                    },
+                  ),
+                ),
+              ),
+              const SizedBox(height: 30.0),
+
+
+              const Align(
+                alignment: Alignment.centerLeft,
+                child: Padding(
+                  padding: const EdgeInsets.only(left: 5.0),
+                  child: Text(
+                      'Colonia',
+                      textAlign: TextAlign.left,
+                      style: AppStyles.texto1
+                  ),
+                ),
+              ),
+              const SizedBox(height: 10.0),
+              Container(
+                decoration: AppStyles.contenedorTextForm,
+                child: Padding(
+                  padding: const EdgeInsets.all(5.0),
+                  child: TextFormField(
+                    controller: coloniaController,
+                    obscureText: false,
+                    textAlign: TextAlign.left,
+                    decoration: AppStyles.textFieldEstilo,
+                    style: AppStyles.texto1,
+                    onChanged: (text) {
+                      setState(() {
+                        convertFirstWordUpperCase(text, coloniaController);
+                      });
+                    },
+                  ),
+                ),
+              ),
+              const SizedBox(height: 30.0),
+
+
+              Align(
+                alignment: Alignment.centerLeft,
+                child: Padding(
+                  padding: const EdgeInsets.only(left: 5.0),
+                  child: Text(
+                      'Número exterior',
+                      textAlign: TextAlign.left,
+                      style: AppStyles.texto1
+                  ),
+                ),
+              ),
+              const SizedBox(height: 10.0,),
+              Container(
+                decoration: AppStyles.contenedorTextForm,
+                child: Padding(
+                  padding: const EdgeInsets.all(5.0),
+                  child: TextFormField(
+                    controller: numExteriorController,
+                    obscureText: false,
+                    textAlign: TextAlign.left,
+                    decoration: AppStyles.textFieldEstilo,
+                    style: AppStyles.texto1,
+                    onChanged: (text) {
+                      setState(() {
+                        convertFirstWordUpperCase(text, numExteriorController);
+                      });
+                    },
+                  ),
+                ),
+              ),
+
+
+              Padding(
+                padding: EdgeInsets.fromLTRB(0, 100, 0, 30),
+                child: Container(
+                  width: AppStyles.anchoBoton,
+                  height: AppStyles.altoBoton,
+                  child: ElevatedButton(
+                    onPressed: () {
+                      SetUser();
+                      Navigator.pushAndRemoveUntil <dynamic>(
+                        context,
+                        MaterialPageRoute <dynamic>(
+                            builder: (BuildContext context) => Pathologies(user: widget.user,)
+                        ),
+                            (route) => false,
+                      );
+                    },
+                    style: ElevatedButton.styleFrom(
+                        backgroundColor: singleton.interfazColores.neutral,
+                        elevation: 5,
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(16),
+                        )
+                    ),
+                    child: const Text("Siguiente",
+                        style: AppStyles.textoBoton
+                    ),
+                  ),
+                ),
+              )
+            ],
+          ),
         ),
-      ),
+      )
     );
   }
 

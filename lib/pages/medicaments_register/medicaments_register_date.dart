@@ -4,14 +4,11 @@ import 'package:app_medicamentos/pages/records/records.dart';
 import 'package:app_medicamentos/utils/singleton.dart';
 import 'package:flutter/material.dart';
 import 'package:app_medicamentos/pages/medicaments_register/medicaments_register.dart';
-import 'package:intl/intl.dart';
 import 'package:syncfusion_flutter_datepicker/datepicker.dart';
 import 'package:sqflite/sqflite.dart';
 import 'package:path/path.dart';
 import 'package:app_medicamentos/models/medicament_model.dart';
 import 'package:app_medicamentos/utils/buttonSheet.dart';
-
-
 import '../../models/reminder_model.dart';
 
 class MedicamentDateRegister extends StatefulWidget {
@@ -64,75 +61,77 @@ class _MedicamentDateRegister extends State <MedicamentDateRegister> {
         ),
       ),
 
-      body: Padding(
-        padding: const EdgeInsets.all(15.0),
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: <Widget>[
-            SfDateRangePicker(
-              selectionMode: DateRangePickerSelectionMode.single,
-              showNavigationArrow: true,
-              onSelectionChanged: (DateRangePickerSelectionChangedArgs args) {
-                medicamentDate = args.value;
-              },
-              todayHighlightColor: singleton.interfazColores.dark,
-              selectionColor: singleton.interfazColores.dark,
-            ),
-          TextField(
-            controller: timeinput, //editing controller of this TextField
-            decoration: InputDecoration(
-                icon: Icon(Icons.timer), //icon of text field
-                labelText: "Hora" //label text of field
-            ),
-            readOnly: true,  //set it true, so that user will not able to edit text
-            onTap: () async {
-              TimeOfDay? pickedTime =  await showTimePicker(
-                initialTime: TimeOfDay.now(),
-                context: context,
-              );
+      body: SingleChildScrollView(
+        child: Padding(
+          padding: const EdgeInsets.all(15.0),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: <Widget>[
+              SfDateRangePicker(
+                selectionMode: DateRangePickerSelectionMode.single,
+                showNavigationArrow: true,
+                onSelectionChanged: (DateRangePickerSelectionChangedArgs args) {
+                  medicamentDate = args.value;
+                },
+                todayHighlightColor: singleton.interfazColores.dark,
+                selectionColor: singleton.interfazColores.dark,
+              ),
+              TextField(
+                controller: timeinput, //editing controller of this TextField
+                decoration: InputDecoration(
+                    icon: Icon(Icons.timer), //icon of text field
+                    labelText: "Hora" //label text of field
+                ),
+                readOnly: true,  //set it true, so that user will not able to edit text
+                onTap: () async {
+                  TimeOfDay? pickedTime =  await showTimePicker(
+                    initialTime: TimeOfDay.now(),
+                    context: context,
+                  );
 
-              if(pickedTime != null ){
-                print(pickedTime.format(context));   //output 10:51 PM
+                  if(pickedTime != null ){
+                    print(pickedTime.format(context));   //output 10:51 PM
 
-                String time = pickedTime.toString().split("(")[1];
-                time = time.split(")")[0];
-                setState(() {
-                  timeinput.text = time; //set the value of text field.
-                });
-              }else{
-                print("Time is not selected");
-              }
-            },
-          ),
-            Padding(
-              padding: EdgeInsets.fromLTRB(0, 100, 0, 0),
-              child: Container(
-                width: 193,
-                height: 77,
-                child: ElevatedButton(
-                  onPressed: () async {
-                    int result = await RegisterMedicament();
-                    muestraButtonSheet(context, result);
-                  },
-                  style: ElevatedButton.styleFrom(
-                      backgroundColor: singleton.interfazColores.neutral,
-                      elevation: 5,
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(16),
-                      )
-                  ),
-                  child: Text("Siguiente",
-                    style: TextStyle(
-                        fontSize: 26
+                    String time = pickedTime.toString().split("(")[1];
+                    time = time.split(")")[0];
+                    setState(() {
+                      timeinput.text = time; //set the value of text field.
+                    });
+                  }else{
+                    print("Time is not selected");
+                  }
+                },
+              ),
+              Padding(
+                padding: EdgeInsets.fromLTRB(0, 200, 0, 0),
+                child: Container(
+                  width: 193,
+                  height: 77,
+                  child: ElevatedButton(
+                    onPressed: () async {
+                      int result = await RegisterMedicament();
+                      muestraButtonSheet(context, result);
+                    },
+                    style: ElevatedButton.styleFrom(
+                        backgroundColor: singleton.interfazColores.neutral,
+                        elevation: 5,
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(16),
+                        )
+                    ),
+                    child: Text("Siguiente",
+                      style: TextStyle(
+                          fontSize: 26
+                      ),
                     ),
                   ),
                 ),
-              ),
-            )
-          ],
+              )
+            ],
+          ),
         ),
-      ),
+      )
     );
   }
 
