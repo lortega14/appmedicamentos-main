@@ -36,7 +36,7 @@ class _StartPage extends State <StartPage> {
                 padding: EdgeInsets.fromLTRB(55, 150, 55, 200),
                 child: Container(
                   child: Image(
-                    image: AssetImage('assets/images/logo_apesaam.png'),
+                    image: AssetImage('assets/images/start_image.png'),
                   ),
                 ),
               ),

@@ -14,9 +14,9 @@ import 'package:path/path.dart' as PATH;
 import 'package:app_medicamentos/utils/msgcall.dart';
 import 'package:page_transition/page_transition.dart';
 import 'package:app_medicamentos/constants.dart';
-import 'package:flutter_alarm_clock/flutter_alarm_clock.dart';
 import '../../utils/colorSheet.dart';
 import '../feedback/feedback_page.dart';
+import 'package:app_medicamentos/pages/map/map_page.dart';
 
 class ProfilePage extends StatefulWidget {
   const ProfilePage({Key? key}) : super(key: key);
@@ -171,6 +171,21 @@ class _ProfilePage extends State<ProfilePage> {
                     heroTag: "Feedback",
                     backgroundColor: singleton.interfazColores.dark,
                     child: const Icon(Icons.feedback),
+                  ),
+                  FloatingActionButton.small(
+                    onPressed: () {
+                      Navigator.pushAndRemoveUntil(
+                        context,
+                        PageTransition(
+                          type: PageTransitionType.fade,
+                          child: const Mapa(),
+                        ),
+                            (route) => false,
+                      );
+                    },
+                    heroTag: "Feedback",
+                    backgroundColor: singleton.interfazColores.dark,
+                    child: const Icon(Icons.map),
                   )
                 ],
               ),

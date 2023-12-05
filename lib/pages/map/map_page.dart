@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:app_medicamentos/pages/map/getApi.dart';
+import 'package:app_medicamentos/pages/profile/profile_page.dart';
+
 
 class Mapa extends StatefulWidget {
   const Mapa({super.key});
@@ -12,7 +14,7 @@ class Mapa extends StatefulWidget {
 class _MapaState extends State<Mapa> {
   late GoogleMapController mapController;
 
-  late LatLng _center = const LatLng(45.521563, -122.677433);
+  late LatLng _center = const LatLng(22.144821, -101.014704);
 
   //Guardar los puntos con las coordenadas (lat, lng)
   final List<LatLng> polyPoints = [];
@@ -36,10 +38,10 @@ class _MapaState extends State<Mapa> {
   Future<void> getJsonData() async {
     //Llamado a la clase
     NetworkHelper networkHelper = NetworkHelper(
-      startLat: 22.144596,
-      startLng: -101.009064,
-      endLat: 22.149730,
-      endLng: -100.992221,
+      startLat: 22.144821,
+      startLng: -101.014704,
+      endLat: 22.138588,
+      endLng: -100.940334,
     );
 
     try {
@@ -82,6 +84,34 @@ class _MapaState extends State<Mapa> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: PreferredSize(
+        preferredSize: Size.fromHeight(60),
+        child: AppBar(
+          title: Text(
+            'Mapa',
+            style: TextStyle(
+              color: Colors.black,
+            ),
+          ),
+          leading: IconButton(
+            icon: Icon(Icons.arrow_back_rounded, color: Colors.black),
+            onPressed: () {
+              Navigator.pushAndRemoveUntil <dynamic>(
+                context,
+                MaterialPageRoute <dynamic>(
+                    builder: (BuildContext context) => ProfilePage()
+                ),
+                    (route) => false,
+              );
+            },
+          ),
+          actions: const [],
+          backgroundColor: Colors.white,
+          automaticallyImplyLeading: false,
+          centerTitle: false,
+          elevation: 0,
+        ),
+      ),
       body: Stack(
         children: [
           GoogleMap(

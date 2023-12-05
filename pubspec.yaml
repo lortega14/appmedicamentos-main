@@ -36,6 +36,7 @@ flutter:
   uses-material-design: true
   assets:
     - assets/images/logo_apesaam.png
+    - assets/images/start_image.png
 
   fonts:
     - family: Roboto
