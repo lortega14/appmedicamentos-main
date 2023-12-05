@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:image_picker/image_picker.dart';
 
 enum Colores {
   blue(dark: Color(0xFF1A5FB4), neutral: Color(0xFF3584E4), light: Color(0xFFc1d7f1)),
@@ -43,4 +44,14 @@ class Singleton{
   factory Singleton() => _instance ?? Singleton._internal();
 
   var interfazColores = Colores.red;
+
+  XFile ? _selectedPicture;
+
+  saveImage(XFile? picture){
+    _selectedPicture = picture;
+  }
+
+  XFile? returnImage(){
+    return _selectedPicture;
+  }
 }

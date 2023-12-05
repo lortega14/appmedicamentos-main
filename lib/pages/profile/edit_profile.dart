@@ -1,3 +1,4 @@
+import 'package:app_medicamentos/utils/singleton.dart';
 import 'package:flutter/material.dart';
 import 'package:app_medicamentos/pages/home_page.dart';
 import 'package:app_medicamentos/pages/profile/profile_page.dart';
@@ -14,11 +15,13 @@ class EditProfile extends StatefulWidget {
 }
 
 class _EditProfile extends State <EditProfile> {
+  Singleton singleton = Singleton();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       resizeToAvoidBottomInset: false,
-      backgroundColor: Color(0xFFEDF2FA),
+      backgroundColor: Color(0xFFF6F5F4),
       appBar: PreferredSize(
         preferredSize: Size.fromHeight(60),
         child: AppBar(
@@ -29,7 +32,7 @@ class _EditProfile extends State <EditProfile> {
             ),
           ),
           leading: IconButton(
-            icon: const Icon(Icons.arrow_back_rounded, color: Color(0xFF09184D)),
+            icon: Icon(Icons.arrow_back_rounded, color: singleton.interfazColores.getColorDark()),
             onPressed: () {
               Navigator.pushAndRemoveUntil <dynamic>(
                 context,
@@ -41,7 +44,7 @@ class _EditProfile extends State <EditProfile> {
             },
           ),
           actions: const [],
-          backgroundColor: const Color(0xFFEDF2FA),
+          backgroundColor: Color(0xFFF6F5F4),
           automaticallyImplyLeading: false,
           centerTitle: false,
           elevation: 0,
@@ -60,13 +63,13 @@ class _EditProfile extends State <EditProfile> {
               enabledBorder: OutlineInputBorder(
                   borderRadius: BorderRadius.circular(15),
                   borderSide: const BorderSide(
-                      color: Color(0xFFF6F5F4),
+                      color: Color(0xFFFFFFFF),
                       width: 1,
                       style: BorderStyle.solid
                   )
               ),
               filled: true,
-              fillColor: Color(0xFFF6F5F4),
+              fillColor: Color(0xFFFFFFFF),
               hintText: 'Nombre(s)',
             ),
           ),
@@ -79,14 +82,14 @@ class _EditProfile extends State <EditProfile> {
               enabledBorder: OutlineInputBorder(
                   borderRadius: BorderRadius.circular(15),
                   borderSide: const BorderSide(
-                      color: Color(0xFFF6F5F4),
+                      color: Color(0xFFFFFFFF),
                       width: 1,
                       style: BorderStyle.solid
 
                   )
               ),
               filled: true,
-              fillColor: Color(0xFFF6F5F4),
+              fillColor: Color(0xFFFFFFFF),
               hintText: 'Apellidos',
             ),
           ),
@@ -99,14 +102,14 @@ class _EditProfile extends State <EditProfile> {
               enabledBorder: OutlineInputBorder(
                   borderRadius: BorderRadius.circular(15),
                   borderSide: const BorderSide(
-                      color: Color(0xFFF6F5F4),
+                      color: Color(0xFFFFFFFF),
                       width: 1,
                       style: BorderStyle.solid
 
                   )
               ),
               filled: true,
-              fillColor: Color(0xFFF6F5F4),
+              fillColor: Color(0xFFFFFFFF),
               hintText: 'Teléfono',
             ),
           ),
@@ -130,7 +133,7 @@ class _EditProfile extends State <EditProfile> {
                   );
                 },
                 style: ElevatedButton.styleFrom(
-                    backgroundColor: Color(0xFF0063C9),
+                    backgroundColor: singleton.interfazColores.getColorNeutral(),
                     elevation: 5,
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(16),
